@@ -8,6 +8,7 @@ import classnames from 'classnames';
 import logo from '../../public/image/logo.png'
 import { TextField } from '@radix-ui/themes';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
+import { SlMenu } from "react-icons/sl";
 
 const Navbar = () => {
   const currentPath = usePathname();
@@ -17,23 +18,20 @@ const Navbar = () => {
     { label: 'Politik', href: '/politik' },
     { label: 'Pendidikan', href: '/pendidikan' },
     { label: 'Teknologi', href: '/teknologi' },
-    { label: 'More', href: '/more' },
   ]
   return (
-    <nav className='flex space-x-5 h-14 items-center justify-center bg-blue-500'>
-        <Link href="/" className='flex-1/3 mx-2'>
-          <Image
-            src= {logo}
-            height={40}
-            width={40}
-            alt='logo'
-          />
-        </Link>
+    <nav className='flex space-x-5 h-14 px-5 items-center justify-center bg-blue-500'>
+        <div className='flex-1/3 mx-2 text-white text-2xl'>
+          <Link href="/more">
+            <SlMenu/>
+          </Link>
+        </div>
         <ul className='mx-10 space-x-6 flex-1/3'>
-          {links.map(link => <Link 
+          {links.map(link => 
+          <Link 
             key={link.href} 
             className={classnames({
-              'text-blue-200': link.href === currentPath,
+              'text-white border-b-2 border-solid': link.href === currentPath,
               'text-blue-100': link.href !== currentPath,
               'hover:text-blue-300 transition-colors': true,
             })} 

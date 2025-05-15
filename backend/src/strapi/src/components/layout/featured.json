@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_layout_featureds",
+  "info": {
+    "displayName": "Featured",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
+    },
+    "description": {
+      "type": "text"
+    },
+    "thumbnail": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_components_search_bars",
+  "info": {
+    "displayName": "Search Bar"
+  },
+  "options": {},
+  "attributes": {
+    "caption": {
+      "type": "string"
+    },
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_components_list_mores",
+  "info": {
+    "displayName": "List More"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

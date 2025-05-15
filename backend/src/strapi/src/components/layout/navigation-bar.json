@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_layout_navigation_bars",
+  "info": {
+    "displayName": "Navigation Bar",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "link": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.link"
+    }
+  }
+}

@@ -2,9 +2,9 @@ import '@radix-ui/themes/styles.css'
 import './theme-config.css'
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Theme, ThemePanel } from '@radix-ui/themes'
+import { Theme } from '@radix-ui/themes'
 import "./globals.css";
-import Navbar from './navbar';
+import Navbar from '../components/navbar/navbar';
 import Footer from './footer';
 
 const inter = Inter({

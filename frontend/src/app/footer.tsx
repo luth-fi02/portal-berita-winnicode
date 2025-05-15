@@ -7,7 +7,7 @@ import Image from 'next/image';
 import classnames from 'classnames';
 import logo from '../../public/image/logo.png'
 
-const Footer = () => {
+export default function Footer() {
   const currentPath = usePathname();
 
   const winnicode = [
@@ -74,7 +74,7 @@ const Footer = () => {
               <h1>Kontak Kami</h1>
               <ul className='flex flex-col space-y-2 py-2 text-blue-100 text-sm font-light shrink'>
                 <li>winnicodegarudaofficial@gmail.com</li>
-                <li><span className='font-medium'>Alamat (Pusat):</span> Bandung - Jl. Asia Afrika No.158, Kb. Pisang, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40261</li>
+                <li><span className='font-medium'>Alamat (Pusat):</span> Bandung - Jl. Asia Afrika No.158, Kb. Pisang, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40261</li>
                 <li><span className='font-medium'>Alamat (Cabang):</span> Bantul,Yogyakarta</li>
                 <li>Call Center: 6285159932501 (24 Jam)</li>
               </ul>
@@ -87,5 +87,3 @@ const Footer = () => {
     </nav>
   )
 }
-
-export default Footer

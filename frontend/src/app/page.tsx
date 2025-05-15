@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import banner from '../../public/image/banner-logo-hitam.png'
 import thumbnail from '../../public/image/thumbnail.jpg'
+import Featured from '@/components/featured/featured';
+
 
 export default function Home() {
   return (
@@ -12,30 +14,11 @@ export default function Home() {
         alt='logo'
         className=''
       />
-
       <div className='flex w-1/1'>
         <div className='flex flex-col flex-1/2'>
-          <div>
-            <h3 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl m-2'>Berita Pilihan</h3>
-            <div className='flex'>
-              <div>
-              <Image
-                src= {thumbnail}
-                width={250}
-                height={250}
-                alt='logo'
-                className='p-3'
-              />
-              </div>
-              <div>
-                <h1 className='font-medium text-xl p-2'>Title</h1>
-                <p className='font-light text-sm pl-2 pb-1'>Description</p>
-                <h1 className='font-medium text-sm p-2 text-blue-800 pl-2 pb-2'>Author</h1>
-              </div>
-            </div>
-          </div>
+        <Featured/>
 
-          <div>
+         <div>
             <h3 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl m-2'>Populer</h3>
             <div className='flex'>
               <div>

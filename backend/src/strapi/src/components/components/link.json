@@ -7,14 +7,12 @@
   "options": {},
   "attributes": {
     "href": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "label": {
-      "type": "string"
-    },
-    "isExternal": {
-      "type": "boolean",
-      "default": false
+      "type": "string",
+      "required": true
     }
   }
 }

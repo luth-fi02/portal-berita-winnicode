@@ -1,21 +1,29 @@
-export interface Author {
+export interface StrapiImageProps {
+  src: string;
+  alt: string;
+  height: number;
+  width: number;
+  className?: string;
+}
+
+interface Author {
     name: string;
 }
 
-export interface Thumbnail {
+interface Thumbnail {
   id: number;
   documentId: string;
   url: string;
 }
 
-export interface FeaturedArticle {
+interface FeaturedArticle {
     id: number;
     title: string;
     status: string;
     author: Author;
   }
   
-export interface FeaturedBlock {
+interface FeaturedBlock {
     __component: string;
     id: number;
     description: string;

@@ -12,17 +12,19 @@
       "target": "api::article.article"
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

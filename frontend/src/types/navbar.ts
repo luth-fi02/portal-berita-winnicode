@@ -1,6 +1,5 @@
 export interface NavigationBarLink {
     id: number;
-    isExternal: boolean;
     href: string;
     label: string;
   }

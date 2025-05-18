@@ -2,6 +2,7 @@ import Image from 'next/image';
 import banner from '../../public/image/banner-logo-hitam.png'
 import thumbnail from '../../public/image/thumbnail.jpg'
 import Featured from '@/components/featured/featured';
+import RecentArticle from '@/components/recent/recent-article';
 
 
 export default function Home() {
@@ -16,7 +17,7 @@ export default function Home() {
       />
       <div className='flex w-1/1'>
         <div className='flex flex-col flex-1/2'>
-        <Featured/>
+          <Featured/>
 
          <div>
             <h3 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl m-2'>Populer</h3>
@@ -39,10 +40,8 @@ export default function Home() {
           </div>
 
         </div>
-        <div className='flex-1/10 p-2'>
-          <h3 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl mb-5'>Terbaru</h3>
-          <h1 className='font-medium text-xl'>Title</h1>
-          <p className='font-light text-sm'>1 minute ago</p>
+        <div className='flex-1/10 p-2 m-h'>
+          <RecentArticle/>
         </div>
       </div>
 

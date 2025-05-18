@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_layout_recents",
+  "info": {
+    "displayName": "Recent"
+  },
+  "options": {},
+  "attributes": {
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article"
+    }
+  }
+}

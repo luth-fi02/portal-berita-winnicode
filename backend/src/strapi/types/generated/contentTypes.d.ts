@@ -410,7 +410,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   attributes: {
     author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
     category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
-    Content: Schema.Attribute.Blocks;
+    Content: Schema.Attribute.Blocks & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -421,7 +421,8 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -441,18 +442,17 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
   attributes: {
     articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
-    avatar: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.String;
+    email: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::author.author'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -476,16 +476,14 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::category.category'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -505,7 +503,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   };
   attributes: {
     blocks: Schema.Attribute.DynamicZone<
-      ['layout.navigation-bar', 'layout.featured']
+      ['layout.navigation-bar', 'layout.featured', 'layout.recent']
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

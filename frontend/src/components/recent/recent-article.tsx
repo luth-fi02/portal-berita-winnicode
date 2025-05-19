@@ -1,9 +1,20 @@
-import getStrapiData, { recentQuery } from '@/lib/strapi';
+import { getArticlesData } from '@/lib/strapi/strapi';
 import RecentArticleCard from './article-card';
 import { RecentQueryResponse } from '@/types/recent';
+import qs from 'qs';
+
+export const recentQuery = qs.stringify({
+    sort: ['publishedAt:desc'],
+    fields: ['title', 'publishedAt', 'slug'],
+    pagination: {
+        start: 0,
+        limit: 6,
+    },
+});
+
 
 export default async function RecentArticle() {
-    const strapiData = await getStrapiData<RecentQueryResponse>('/api/articles', recentQuery)
+    const strapiData = await getArticlesData<RecentQueryResponse>(recentQuery)
 
     return (
         <section>

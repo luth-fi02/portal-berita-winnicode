@@ -7,7 +7,6 @@ import Link from "next/link";
 
 export default function Categories({ strapiData }: { strapiData: NavigationBarQueryResponse }) {
     const currentPath = usePathname();
-    
     return (
             <ul className='mx-10 space-x-6 flex-1/3'>
               {strapiData.data.blocks[0].link.map((link: { href: string, label: string, id:number }) => 

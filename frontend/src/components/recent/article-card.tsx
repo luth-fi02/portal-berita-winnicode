@@ -8,7 +8,7 @@ export default function ArticleCard({ strapiData }: { strapiData: RecentQueryRes
     console.dir(strapiData, {depth: null});
     const articles = strapiData.data
     return (
-    <ul className='flex flex-col space-y-3 overflow-y-scroll'>
+    <ul className='flex flex-col space-y-3'>
       {articles.map((article: { title: string, publishedAt: string, slug: string }) => 
         <Link 
           key={article.slug} 

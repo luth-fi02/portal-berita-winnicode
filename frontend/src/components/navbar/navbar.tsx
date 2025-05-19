@@ -3,12 +3,29 @@ import React from 'react'
 import { TextField } from '@radix-ui/themes';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import { SlMenu } from "react-icons/sl";
-import getStrapiData, { navigationBarQuery } from '@/lib/strapi';
+import { getHomePageData } from '@/lib/strapi/strapi';
 import { NavigationBarQueryResponse } from '@/types/navbar';
 import Categories from '@/components/navbar';
+import qs from "qs";
+
+export const navigationBarQuery = qs.stringify({
+    populate: {
+        blocks: {
+            on: {
+                'layout.navigation-bar': {
+                    populate: {
+                        'link': {
+                            populate: '*'
+                        }
+                    }
+                }
+            }
+        }
+    }
+});
 
 export default async function Navbar() {
-  const strapiData = await getStrapiData<NavigationBarQueryResponse>('/api/home-page', navigationBarQuery)
+  const strapiData = await getHomePageData<NavigationBarQueryResponse>(navigationBarQuery)
 
   return (
     <nav className='flex space-x-5 h-14 px-5 items-center justify-center bg-blue-500 sticky top-0'>

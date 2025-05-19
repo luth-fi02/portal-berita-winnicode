@@ -5,7 +5,7 @@ export interface NavigationBarLink {
   }
   
   export interface NavigationBarBlock {
-    __component: 'layout.navigation-bar';
+    __component: string;
     id: number;
     link: NavigationBarLink[];
   }

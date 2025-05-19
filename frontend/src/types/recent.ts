@@ -1,5 +1,5 @@
 interface Article {
-    id: number,
+    id: number;
     documentId: string;
     title: string;
     publishedAt: string;

@@ -29,7 +29,7 @@ export default function RootLayout({
       >
         <Theme appearance='light'>
           <Navbar/>
-          <main className='p-5'>{children}</main>
+          <main className='p-5 min-h-screen'>{children}</main>
           <Footer/>
         </Theme>
       </body>

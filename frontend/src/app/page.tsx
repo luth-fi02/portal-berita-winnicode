@@ -18,27 +18,7 @@ export default function Home() {
       <div className='flex w-1/1'>
         <div className='flex flex-col flex-1/2'>
           <Featured/>
-
-         <div>
-            <h3 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl m-2'>Populer</h3>
-            <div className='flex'>
-              <div>
-              <Image
-                src= {thumbnail}
-                width={250}
-                height={250}
-                alt='logo'
-                className='p-3'
-              />
-              </div>
-              <div>
-                <h1 className='font-medium text-xl p-2'>Title</h1>
-                <p className='font-light text-sm pl-2 pb-1'>Description</p>
-                <h1 className='font-medium text-sm p-2 text-blue-800 pl-2 pb-2'>Author</h1>
-              </div>
-            </div>
-          </div>
-
+          <Featured/>
         </div>
         <div className='flex-1/10 p-2 m-h'>
           <RecentArticle/>

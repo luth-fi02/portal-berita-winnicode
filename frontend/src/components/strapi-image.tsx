@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getStrapiMedia } from "@/lib/strapi";
+import { getStrapiMedia } from "@/lib/strapi/strapi";
 import { StrapiImageProps } from "@/types/strapi"
 
 export function StrapiImage({

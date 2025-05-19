@@ -39,23 +39,12 @@ export interface LayoutNavigationBar extends Struct.ComponentSchema {
   };
 }
 
-export interface LayoutRecent extends Struct.ComponentSchema {
-  collectionName: 'components_layout_recents';
-  info: {
-    displayName: 'Recent';
-  };
-  attributes: {
-    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
-  };
-}
-
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'components.link': ComponentsLink;
       'layout.featured': LayoutFeatured;
       'layout.navigation-bar': LayoutNavigationBar;
-      'layout.recent': LayoutRecent;
     }
   }
 }

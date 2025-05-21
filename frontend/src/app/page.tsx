@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import banner from '../../public/image/banner-logo-hitam.png'
 import thumbnail from '../../public/image/thumbnail.jpg'
-import Featured from '@/components/featured/featured';
-import RecentArticle from '@/components/recent/recent-article';
+import Featured from '@/components/(Homepage)/featured/featured';
+import RecentArticle from '@/components/(Homepage)/recent/recent-article';
 
 
 export default function Home() {
@@ -13,9 +13,9 @@ export default function Home() {
         width={500}
         height={500}
         alt='logo'
-        className=''
+        className='my-10'
       />
-      <div className='flex w-1/1'>
+      <div className='flex w-full'>
         <div className='flex flex-col flex-1/2'>
           <Featured/>
           <Featured/>

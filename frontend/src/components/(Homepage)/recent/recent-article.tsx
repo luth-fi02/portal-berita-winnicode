@@ -18,7 +18,7 @@ export default async function RecentArticle() {
 
     return (
         <section>
-            <h1 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl mb-5'>Terbaru</h1>
+            <h2 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl mb-5'>Terbaru</h2>
             <RecentArticleCard strapiData = {strapiData}/>
         </section>   
     )

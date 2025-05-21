@@ -19,9 +19,9 @@ export default function ArticleCard({ strapiData }: { strapiData: FeaturedQueryR
               />
       </div>
       <div>
-        <h2 className='hover:underline font-medium text-xl p-2'>{article.title}</h2>
+        <h3 className='hover:underline font-medium text-xl p-2'>{article.title}</h3>
         <p className='hover:underline font-light text-sm pl-2 pb-1'>{block.description}</p>
-        <h3 className='font-medium text-sm p-2 text-blue-800 pl-2 pb-2'>{article.author.name}</h3>
+        <h4 className='font-medium text-sm p-2 text-blue-800 pl-2 pb-2'>{article.author.name}</h4>
       </div>
     </Link>
     )

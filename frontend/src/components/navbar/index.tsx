@@ -7,18 +7,19 @@ import Link from "next/link";
 
 export default function Categories({ strapiData }: { strapiData: NavigationBarQueryResponse }) {
     const currentPath = usePathname();
+    console.log(currentPath)
     return (
-            <ul className='mx-10 space-x-6 flex-1/3'>
-              {strapiData.data.blocks[0].link.map((link: { href: string, label: string, id:number }) => 
+            <ul className='space-x-6 text-center  '>
+              {strapiData.data.blocks[0].link[0].categories.map((link: { href: string, name: string }) => 
                 <Link 
-                  key={link.id} 
+                  key={link.href} 
                   className={classnames({
-                    'text-white border-b-2 border-solid': link.href === currentPath,
+                    'text-white border-b-2 border-solid': '/' + link.href === currentPath,
                     'text-blue-100': link.href !== currentPath,
                     'hover:text-blue-300 transition-colors': true,
                   })} 
                   href={link.href}>
-                  {link.label}
+                  {link.name}
                 </Link>)}
             </ul>
       )

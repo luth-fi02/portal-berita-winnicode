@@ -1,16 +1,22 @@
-export interface NavigationBarLink {
+interface Categories {
+  id: number;
+  documentId: string;
+  name: string;
+  href: string;
+}
+
+interface Link {
     id: number;
-    href: string;
-    label: string;
+    categories: Categories[];
   }
-  
-  export interface NavigationBarBlock {
+
+interface NavigationBarBlock {
     __component: string;
     id: number;
-    link: NavigationBarLink[];
+    link: Link[];
   }
   
-  export interface NavigationBarQueryResponse {
+export interface NavigationBarQueryResponse {
     data: {
       id: number;
       documentId: string;

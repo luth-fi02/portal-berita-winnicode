@@ -1,13 +1,13 @@
-export interface StrapiImageProps {
-  src: string;
-  alt: string;
-  height: number;
-  width: number;
-  className?: string;
+interface Category {
+  id: number;
+  documentId: string;
+  href: string;
 }
 
 interface Author {
-    name: string;
+  id: number;
+  documentId: string;  
+  name: string;
 }
 
 interface Thumbnail {
@@ -18,9 +18,12 @@ interface Thumbnail {
 
 interface FeaturedArticle {
     id: number;
+    documentId: string;
     title: string;
-    status: string;
+    publishedAt: string;
+    slug: string;
     author: Author;
+    category: Category;
   }
   
 interface FeaturedBlock {

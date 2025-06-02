@@ -1,4 +1,4 @@
-interface Categories {
+interface Category {
   id: number;
   documentId: string;
   name: string;
@@ -7,7 +7,7 @@ interface Categories {
 
 interface Link {
     id: number;
-    categories: Categories[];
+    categories: Category[];
   }
 
 interface NavigationBarBlock {

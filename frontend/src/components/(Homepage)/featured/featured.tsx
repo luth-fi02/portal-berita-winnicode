@@ -14,10 +14,13 @@ export const featuredQuery = qs.stringify({
                             fields: ['url']
                         },
                         'article': {
-                            fields: ['title', 'publishedAt'],
+                            fields: ['title', 'publishedAt', 'slug'],
                             populate:{
                                 'author': {
                                      fields: ['name']
+                                },
+                                'category': {
+                                     fields: ['href']
                                 },
                             }
                         },
@@ -30,7 +33,6 @@ export const featuredQuery = qs.stringify({
 
 export default async function Featured() {
     const strapiData = await getStrapiData<FeaturedQueryResponse>('/api/home-page', featuredQuery)
-
     return (
         <section>
             <h2 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl m-2'>Berita Pilihan</h2>

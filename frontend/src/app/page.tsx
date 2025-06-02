@@ -7,7 +7,7 @@ import RecentArticle from '@/components/(Homepage)/recent/recent-article';
 
 export default function Home() {
   return (
-    <div className='flex flex-col items-center justify-center'>
+    <div className='flex flex-col items-center'>
       <Image
         src= {banner}
         width={500}

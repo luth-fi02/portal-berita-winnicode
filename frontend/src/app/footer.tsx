@@ -39,7 +39,7 @@ export default function Footer() {
         <div>
           <div className='flex py-5 px-2 space-x-24 text-blue-50'>
             <div>
-              <h1>Winnicode Garuda Teknologi</h1>
+              <p>Winnicode Garuda Teknologi</p>
               <ul className='flex flex-col space-y-2 py-2'>
                 {winnicode.map(link => 
                 <Link 
@@ -55,7 +55,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h1>Topik</h1>
+              <p>Topik</p>
               <ul className='flex flex-col space-y-2 py-2'>
                 {topik.map(link => 
                 <Link 
@@ -71,7 +71,7 @@ export default function Footer() {
               </ul>
             </div>
             <div className='max-w-1/6'>
-              <h1>Kontak Kami</h1>
+              <p>Kontak Kami</p>
               <ul className='flex flex-col space-y-2 py-2 text-blue-100 text-sm font-light shrink'>
                 <li>winnicodegarudaofficial@gmail.com</li>
                 <li><span className='font-medium'>Alamat (Pusat):</span> Bandung - Jl. Asia Afrika No.158, Kb. Pisang, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40261</li>
@@ -80,7 +80,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h1>Ikuti Kami</h1>
+              <p>Ikuti Kami</p>
             </div>
           </div>
         </div>

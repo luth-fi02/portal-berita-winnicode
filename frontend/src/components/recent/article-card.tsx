@@ -1,6 +1,6 @@
 'use client';
 
-import { RecentQueryResponse, RecentCategory } from '@/types/recent';
+import { RecentQueryResponse, RecentCategory, HomepageCategoryQueryResponse } from '@/types/recent';
 import Link from 'next/link';
 import classnames from 'classnames';
 import { StrapiImage } from '@/components/strapi-image';
@@ -29,6 +29,34 @@ export function CategoryPageArticleCard ({ strapiData }: { strapiData: CategoryR
   return (
   <ul className='flex flex-col space-y-3'>
     {articles.map((article: { title: string, publishedAt: string, slug: string, thumbnail: Thumbnail, description: string, author: Author, category: Category }) => 
+      <Link 
+        key={article.slug} 
+        className={classnames({
+          'transition-colors  hover:bg-blue-900/5 flex': true,
+        })} 
+        href={article.category.href + '/' + article.slug}>
+          <StrapiImage
+          src= {article.thumbnail.url}
+          alt='logo'
+          width={250}
+          height={250}
+          className='p-3'
+        />
+        <div className=''>
+          <h3 className='hover:underline font-medium text-xl p-2'>{article.title}</h3>
+          <p className='hover:underline font-light text-sm pl-2 pb-5'>{article.description}</p>
+          <p className='hover:underline text-gray-500 font-light text-xs pl-2 pb-1'>{new Date(article.publishedAt).toDateString()}</p>
+        </div>
+      </Link>)}
+  </ul>
+  )
+}
+
+export function HomepageCategoryArticleCard ({ strapiData }: { strapiData: HomepageCategoryQueryResponse}) {
+  const categories = strapiData.data.blocks[0].categories
+  return (
+  <ul className='flex flex-col space-y-3'>
+    {categories.map((category: { href: string  }) => 
       <Link 
         key={article.slug} 
         className={classnames({

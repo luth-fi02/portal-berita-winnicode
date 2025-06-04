@@ -1,4 +1,4 @@
-import RecentArticle from "@/components/(Homepage)/recent/recent-article";
+import RecentArticle from "@/components/recent/recent-article";
 import { StrapiImage } from "@/components/strapi-image";
 import { getArticlesData } from "@/lib/strapi/strapi";
 import { ArticleQueryResponse } from "@/types/article";

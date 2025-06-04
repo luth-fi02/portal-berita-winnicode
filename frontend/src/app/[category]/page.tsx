@@ -4,7 +4,7 @@ import qs from 'qs';
 import Image from 'next/image';
 import banner from '../../../public/image/banner-logo-hitam.png'
 import { notFound } from 'next/navigation';
-import { RecentCategoryArticle } from '@/components/(Homepage)/recent/recent-article';
+import { RecentCategoryArticle } from '@/components/recent/recent-article';
 
 const categoryQuery = qs.stringify({
     fields: ['name']
@@ -56,7 +56,6 @@ export default async function CategoryPage({
 
   //get articles with same category as param
   const articles = await getArticlesData<CategoryRecentQueryResponse>(filterByCategoryQuery(category))
-  console.dir(articles, {depth: null});
   return (
     <div className='flex flex-col items-center justify-center'>
       <Image

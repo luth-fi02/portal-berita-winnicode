@@ -4,40 +4,11 @@ import qs from 'qs';
 import Image from 'next/image';
 import banner from '../../../public/image/banner-logo-hitam.png'
 import { notFound } from 'next/navigation';
-import { RecentCategoryArticle } from '@/components/recent/recent-article';
+import { filterByCategoryQuery, RecentCategoryArticle } from '@/components/recent/recent-article';
 
 const categoryQuery = qs.stringify({
     fields: ['name']
 });
-
-function filterByCategoryQuery(category: string){
-  return qs.stringify({
-    sort: ['publishedAt:desc'],
-    fields: ['title', 'publishedAt', 'description', 'slug'],
-    populate: {
-        'thumbnail': {
-          fields: ['url']
-        },
-        'author': {
-             fields: ['name']
-        },
-        'category': {
-          fields: ['name', 'href']
-        }
-    },
-    filters: {
-      category: {
-        name: {
-          $eqi: category,
-        }
-      }
-    },
-    pagination: {
-      page: 1,
-      pageSize: 10,
-    },
-  });
-}
 
 export default async function CategoryPage({
   params,
@@ -55,7 +26,7 @@ export default async function CategoryPage({
   }
 
   //get articles with same category as param
-  const articles = await getArticlesData<CategoryRecentQueryResponse>(filterByCategoryQuery(category))
+  const articles = await getArticlesData<CategoryRecentQueryResponse>(filterByCategoryQuery(category, 1, 10))
   return (
     <div className='flex flex-col items-center justify-center'>
       <Image

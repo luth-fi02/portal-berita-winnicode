@@ -17,6 +17,26 @@ interface Article {
 export interface RecentQueryResponse {
     data: Article[];
 }
+//////////////
+export interface Articles {
+    id: number;
+    documentId: string;
+    title: string;
+    publishedAt: string;
+    description: string;
+    slug: string;
+    thumbnail: Thumbnail;
+    author: Author
+    category: RecentCategory;
+}
+
+export interface HomepageCategoryArticlesData {
+    id: number;
+    documentId: string;
+    href: string;
+    name: string;
+    articles: Articles[];
+}
 
 export interface HomepageCategoryQueryResponse {
     data: {
@@ -29,6 +49,18 @@ export interface HomepageCategoryQueryResponse {
     }
 }
 
+interface Thumbnail{
+    id: number;
+    documentId: string;
+    url: string;
+}
+
+interface Author{
+    id: number;
+    documentId: string;
+    name: string;
+}
+
 interface Component {
     _component: string;
     id: number;
@@ -39,4 +71,5 @@ interface Categories {
     id: number;
     documentId: string;
     href: string;
+    name: string;
 }

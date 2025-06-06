@@ -54,27 +54,34 @@ export function CategoryPageArticleCard ({ strapiData }: { strapiData: CategoryR
 
 export function HomepageCategoryArticleCard ({ strapiData }: { strapiData: HomepageCategoryArticlesData[]}) {
   return (
-    <ul className=''>
+    <ul className='grid grid-cols-3 mt-5'>
       {strapiData.map((data: { href: string; name: string; articles: Articles[] }) => (
-        <div key={data.href} className='flex flex-col m-2 flex-1/3'>
+        <div key={data.href} className='p-2'>
 
           <Link
             href={`/${data.href}`}
             className='transition-colors hover:bg-blue-900/5 flex'
           >
-            <h2 className='border-l-3 border-l-blue-950 pl-2 font-medium text-xl'>
+            <h1 className='border-l-3 border-l-blue-950 pl-2 font-medium text-2xl'>
               {data.name}
-            </h2>
+            </h1>
           </Link>
 
           {/* Article List */}
           {data.articles.map((article) => (
-            <Link key={article.slug} href={`/${article.slug}`}>
+            <Link key={article.slug} href={`/${data.href}/${article.slug}`}>
               <div className='flex border-y py-2 my-2 hover:bg-blue-100'>
                 <div className='flex flex-col w-2/3'>
                   <h1 className='font-medium text-base'>{article.title}</h1>
                   <p className='font-light text-sm'>{new Date(article.publishedAt).toDateString()}</p>
                 </div>
+                    <StrapiImage
+                        src= {article.thumbnail.url}
+                        width={150}
+                        height={150}
+                        alt='logo'
+                        className='flex 1/3'
+                      />                
               </div>
             </Link>
           ))}

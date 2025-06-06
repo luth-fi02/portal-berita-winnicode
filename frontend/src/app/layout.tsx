@@ -5,7 +5,7 @@ import { Inter } from "next/font/google";
 import { Theme } from '@radix-ui/themes'
 import "./globals.css";
 import Navbar from '../components/navbar/navbar';
-import Footer from './footer';
+import Footer from '../components/footer/footer';
 
 const inter = Inter({
   variable: "--font-inter",

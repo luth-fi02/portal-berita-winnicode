@@ -1,31 +1,29 @@
-'use client';
+'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation';
 import React from 'react'
 import Image from 'next/image';
 import classnames from 'classnames';
-import logo from '../../public/image/logo.png'
+import logo from '../../../public/image/logo.png'
+import { getCategoriesData } from '@/lib/strapi/strapi';
+import CategoryQueryResponse from '@/types/category';
+import { usePathname } from 'next/navigation';
+import qs from 'qs';
+import Topik from '.';
 
-export default function Footer() {
+const categoryQuery = qs.stringify({
+  fields: ['name', 'href']
+});
+
+const winnicode = [
+  { label: 'Tentang Kami', href: '/about' },
+  { label: 'Karir', href: '/karir' },
+]
+
+
+export default async function Footer() {
   const currentPath = usePathname();
-
-  const winnicode = [
-    { label: 'Tentang Kami', href: '/about' },
-    { label: 'Karir', href: '/karir' },
-  ]
-
-  const topik = [
-    { label: 'Indonesia', href: '/indonesia' },
-    { label: 'Internasional', href: '/internasional' },
-    { label: 'Politik', href: '/politik' },
-    { label: 'Pendidikan', href: '/pendidikan' },
-    { label: 'Kesehatan', href: '/kesehatan' },
-    { label: 'Olahraga', href: '/olahraga' },
-    { label: 'Otomotif', href: '/otomotif' },
-    { label: 'Hiburan', href: '/hiburan' },
-  ]
-
+  const categories = await getCategoriesData<CategoryQueryResponse>(categoryQuery)
   return (
     <nav className='flex flex-col p-5 bg-blue-500'>
         <div className='flex-1/3 mx-2'>
@@ -56,19 +54,7 @@ export default function Footer() {
             </div>
             <div>
               <p>Topik</p>
-              <ul className='flex flex-col space-y-2 py-2'>
-                {topik.map(link => 
-                <Link 
-                  key={link.href} 
-                  className={classnames({
-                    'text-white': link.href === currentPath,
-                    'text-blue-100': link.href !== currentPath,
-                    'hover:text-blue-300 transition-colors text-sm font-light': true,
-                  })} 
-                  href={link.href}>
-                  {link.label}
-                </Link>)}
-              </ul>
+              <Topik categories={categories}/>
             </div>
             <div className='max-w-1/6'>
               <p>Kontak Kami</p>

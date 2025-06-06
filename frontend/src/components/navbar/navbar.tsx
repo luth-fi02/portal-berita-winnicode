@@ -8,7 +8,7 @@ import { NavigationBarQueryResponse } from '@/types/navbar';
 import Categories from '@/components/navbar';
 import qs from "qs";
 
-export const navigationBarQuery = qs.stringify({
+const navigationBarQuery = qs.stringify({
     populate: {
         blocks: {
             on: {

@@ -3,8 +3,6 @@ import RecentArticleCard, { CategoryPageArticleCard, HomepageCategoryArticleCard
 import { HomepageCategoryQueryResponse, RecentQueryResponse } from '@/types/recent';
 import qs from 'qs';
 import { CategoryRecentQueryResponse } from '@/types/category';
-import thumbnail from '../../../public/image/thumbnail.jpg'
-import Image from 'next/image';
 
 export const recentQuery = qs.stringify({
     sort: ['publishedAt:desc'],
@@ -89,27 +87,7 @@ export async function RecentHomepageCategoryArticle() {
     console.dir(strapiData, { depth: null });
     return (
     <section className='flex flex-col w-1/1'>
-        <div className='flex justify-stretch'>
-          <div className='flex flex-col m-2 flex-1/3'>
-            <h2 className='border-l-3 border-l-blue-950 pl-2 font-medium text-xl'>Indonesia</h2>
-            <div className='flex border-y py-2 my-2'>
-              <div className='flex flex-col flex-2/3'>
-                  <h1 className='font-medium text-base'>Title</h1>
-                  <p className='font-light text-sm'>1 minute ago</p>
-              </div>
-                <Image
-                    src= {thumbnail}
-                    width={200}
-                    height={200}
-                    alt='logo'
-                    className='flex 1/3'
-                  />                
-            </div>
-          </div>
-        </div>
-        <div className='flex justify-stretch'>
-          <HomepageCategoryArticleCard strapiData={strapiData}/>
-        </div>
+        <HomepageCategoryArticleCard strapiData={strapiData}/>
     </section>
     
     )

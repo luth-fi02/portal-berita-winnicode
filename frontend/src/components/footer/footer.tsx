@@ -1,28 +1,16 @@
-'use client'
-
-import Link from 'next/link'
-import React from 'react'
+import React from 'react';
 import Image from 'next/image';
-import classnames from 'classnames';
 import logo from '../../../public/image/logo.png'
 import { getCategoriesData } from '@/lib/strapi/strapi';
 import CategoryQueryResponse from '@/types/category';
-import { usePathname } from 'next/navigation';
 import qs from 'qs';
-import Topik from '.';
+import Topik, { Winnicode } from '.';
 
 const categoryQuery = qs.stringify({
   fields: ['name', 'href']
 });
 
-const winnicode = [
-  { label: 'Tentang Kami', href: '/about' },
-  { label: 'Karir', href: '/karir' },
-]
-
-
 export default async function Footer() {
-  const currentPath = usePathname();
   const categories = await getCategoriesData<CategoryQueryResponse>(categoryQuery)
   return (
     <nav className='flex flex-col p-5 bg-blue-500'>
@@ -38,19 +26,7 @@ export default async function Footer() {
           <div className='flex py-5 px-2 space-x-24 text-blue-50'>
             <div>
               <p>Winnicode Garuda Teknologi</p>
-              <ul className='flex flex-col space-y-2 py-2'>
-                {winnicode.map(link => 
-                <Link 
-                  key={link.href} 
-                  className={classnames({
-                    'text-white': link.href === currentPath,
-                    'text-blue-100': link.href !== currentPath,
-                    'hover:text-blue-300 transition-colors text-sm font-light': true,
-                  })} 
-                  href={link.href}>
-                  {link.label}
-                </Link>)}
-              </ul>
+              <Winnicode/>
             </div>
             <div>
               <p>Topik</p>

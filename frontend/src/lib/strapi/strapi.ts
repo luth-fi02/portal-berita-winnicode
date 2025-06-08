@@ -1,30 +1,8 @@
-export default async function getStrapiData<T>(path: string, query: string): Promise<T>{
-    const baseUrl = getStrapiURL();
 
-    const url = new URL(path, baseUrl);
-    url.search = query
-    try{
-      const response = await fetch(url.href, { next: {revalidate: 5} });
-      const data = (await response.json()) as T;
-      return data;
-    } catch (error) {
-      console.error('Error fetching data from Strapi',error);
-      throw error;
-    } 
-}
 
 async function fetchData<T>(url: string): Promise<T> {
-    const authToken = null; // we will implement this later getAuthToken() later
-    const headers = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${authToken}`,
-      },
-    };
-  
     try {
-      const response = await fetch(url, authToken ? headers : {});
+      const response = await fetch(url, { next: {revalidate: 5} });
       const data = await response.json() as T;
       return data;
     } catch (error) {

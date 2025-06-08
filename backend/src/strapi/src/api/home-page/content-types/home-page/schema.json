@@ -15,7 +15,8 @@
       "type": "dynamiczone",
       "components": [
         "layout.navigation-bar",
-        "layout.featured"
+        "layout.featured",
+        "layout.by-category"
       ]
     }
   }

@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_layout_footers",
+  "info": {
+    "displayName": "Footer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "winnicode": {
+      "displayName": "winnicode",
+      "type": "component",
+      "repeatable": false,
+      "component": "components.winnicode"
+    },
+    "TopikLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.nav-bar-link"
+    },
+    "Kontak": {
+      "displayName": "Kontak",
+      "type": "component",
+      "repeatable": false,
+      "component": "components.kontak"
+    },
+    "SocialLink": {
+      "displayName": "SocialLink",
+      "type": "component",
+      "repeatable": false,
+      "component": "components.social-link"
+    }
+  }
+}

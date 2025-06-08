@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_components_winnicodes",
+  "info": {
+    "displayName": "winnicode",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Link": {
+      "displayName": "Link",
+      "type": "component",
+      "repeatable": true,
+      "component": "components.link"
+    },
+    "Title": {
+      "type": "string"
+    }
+  }
+}

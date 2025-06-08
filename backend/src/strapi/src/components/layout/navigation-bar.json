@@ -9,7 +9,7 @@
     "link": {
       "type": "component",
       "repeatable": true,
-      "component": "components.link"
+      "component": "components.nav-bar-link"
     }
   }
 }

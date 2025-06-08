@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_components_nav_bar_links",
+  "info": {
+    "displayName": "NavBarLink"
+  },
+  "options": {},
+  "attributes": {
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    }
+  }
+}

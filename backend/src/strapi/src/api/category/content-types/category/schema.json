@@ -21,6 +21,11 @@
       "relation": "oneToMany",
       "target": "api::article.article",
       "mappedBy": "category"
+    },
+    "href": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
     }
   }
 }

@@ -84,7 +84,6 @@ export function RecentCategoryArticle(strapiData: CategoryRecentQueryResponse) {
 
 export async function RecentHomepageCategoryArticle() {
     const strapiData = await getCategoriesWithArticles()
-    console.dir(strapiData, { depth: null });
     return (
     <section className='flex flex-col w-1/1'>
         <HomepageCategoryArticleCard strapiData={strapiData}/>

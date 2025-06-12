@@ -3,34 +3,29 @@ import React from 'react'
 import { TextField } from '@radix-ui/themes';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import { SlMenu } from "react-icons/sl";
-import { getHomePageData } from '@/lib/strapi/strapi';
+import { getGlobalData } from '@/lib/strapi/strapi';
 import { NavigationBarQueryResponse } from '@/types/navbar';
 import Categories from '@/components/navbar';
 import qs from "qs";
 
 const navigationBarQuery = qs.stringify({
-    populate: {
-        blocks: {
-            on: {
-                'layout.navigation-bar': {
-                    populate: {
-                        'link': {
-                            populate: {
-                              'categories' : {
-                                fields: ['name', 'href']
-                              }
-                            }
-                        }
-                    }
-                }
+    populate:{
+      "Navbar":{
+        populate: {
+          "link":{
+            populate: {
+              "categories":{
+                fields: [ 'name', 'href']
+              },
             }
-        }
-    }
+          }
+        },
+      }
+    },
 });
 
 export default async function Navbar() {
-  const strapiData = await getHomePageData<NavigationBarQueryResponse>(navigationBarQuery)
-
+  const strapiData = await getGlobalData<NavigationBarQueryResponse>(navigationBarQuery)
   return (
     <nav className='flex h-14 w-full px-5 items-center justify-center bg-blue-500 fixed top-0'>
         <div className='flex-1'>

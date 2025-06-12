@@ -38,6 +38,15 @@ export async function getCategoriesData<T>(query: string): Promise<T>{
   return await fetchData(url.href);
 }
 
+export async function getGlobalData<T>(query: string): Promise<T>{
+  const baseUrl = getStrapiURL();
+
+  const url = new URL("/api/global", baseUrl);
+  url.search = query
+  
+  return await fetchData(url.href);
+}
+
 export function getStrapiURL() {
     return process.env.STRAPI_URL ?? "http://localhost:1337";
   }

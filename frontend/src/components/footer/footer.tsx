@@ -1,17 +1,50 @@
 import React from 'react';
 import Image from 'next/image';
 import logo from '../../../public/image/logo.png'
-import { getCategoriesData } from '@/lib/strapi/strapi';
-import CategoryQueryResponse from '@/types/category';
+import { getGlobalData } from '@/lib/strapi/strapi';
 import qs from 'qs';
 import Topik, { Winnicode } from '.';
+import FooterQueryResponse from '@/types/footer';
 
-const categoryQuery = qs.stringify({
-  fields: ['name', 'href']
+const footerQuery = qs.stringify({
+  populate:{
+    "Footer":{
+      populate: {
+        "winnicode":{
+          populate: {
+            "Link":{
+              fields: [ 'name', 'href']
+            },
+          },
+          fields: [ 'Label' ]
+        },
+        "TopikLink": {
+          populate: {
+            "categories": {
+              fields: [ 'name', 'href' ]
+            }
+          },
+          fields: [ 'Label' ]
+        },
+        "Kontak": {
+          fields: [ 'email', 'AlamatCabang', 'AlamatPusat', 'CallCenter', 'Label' ]
+        },
+        "SocialLink": {
+          fields: [ 'href', 'Label' ]
+        }
+      },
+    }
+  },
 });
 
 export default async function Footer() {
-  const categories = await getCategoriesData<CategoryQueryResponse>(categoryQuery)
+  const footerData = await getGlobalData<FooterQueryResponse>(footerQuery);
+  const data = footerData.data.Footer;
+  const categories = data.TopikLink.categories;
+  const winnicode = data.winnicode;
+  const kontak = data.Kontak;
+  const social = data.SocialLink;
+  console.dir(footerData, { depth: null });
   return (
     <nav className='flex flex-col p-5 bg-blue-500'>
         <div className='flex-1/3 mx-2'>
@@ -25,24 +58,24 @@ export default async function Footer() {
         <div>
           <div className='flex py-5 px-2 space-x-24 text-blue-50'>
             <div>
-              <p>Winnicode Garuda Teknologi</p>
-              <Winnicode/>
+              <p>{winnicode.Label}</p>
+              <Winnicode links={winnicode.Link}/>
             </div>
             <div>
-              <p>Topik</p>
+              <p>{data.TopikLink.Label}</p>
               <Topik categories={categories}/>
             </div>
             <div className='max-w-1/6'>
-              <p>Kontak Kami</p>
+              <p>{kontak.Label}</p>
               <ul className='flex flex-col space-y-2 py-2 text-blue-100 text-sm font-light shrink'>
-                <li>winnicodegarudaofficial@gmail.com</li>
-                <li><span className='font-medium'>Alamat (Pusat):</span> Bandung - Jl. Asia Afrika No.158, Kb. Pisang, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40261</li>
-                <li><span className='font-medium'>Alamat (Cabang):</span> Bantul,Yogyakarta</li>
-                <li>Call Center: 6285159932501 (24 Jam)</li>
+                <li>{kontak.email}</li>
+                <li><span className='font-medium'>Alamat (Pusat):</span> {kontak.AlamatPusat} </li>
+                <li><span className='font-medium'>Alamat (Cabang):</span> {kontak.AlamatCabang} </li>
+                <li>{kontak.CallCenter}</li>
               </ul>
             </div>
             <div>
-              <p>Ikuti Kami</p>
+              <p>{social.Label}</p>
             </div>
           </div>
         </div>

@@ -10,8 +10,7 @@ interface Link {
     categories: Category[];
   }
 
-interface NavigationBarBlock {
-    __component: string;
+interface NavigationBar {
     id: number;
     link: Link[];
   }
@@ -23,7 +22,7 @@ export interface NavigationBarQueryResponse {
       createdAt: string;
       updatedAt: string;
       publishedAt: string;
-      blocks: NavigationBarBlock[];
+      Navbar: NavigationBar;
     };
   }
 

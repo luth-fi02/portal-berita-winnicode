@@ -3,34 +3,39 @@ import Image from 'next/image';
 import logo from '../../../public/image/logo.png'
 import { getGlobalData } from '@/lib/strapi/strapi';
 import qs from 'qs';
-import Topik, { Winnicode } from '.';
+import Topik, { Social, Winnicode } from '.';
 import FooterQueryResponse from '@/types/footer';
 
 const footerQuery = qs.stringify({
   populate:{
     "Footer":{
       populate: {
-        "winnicode":{
+        "Winnicode":{
           populate: {
             "Link":{
-              fields: [ 'name', 'href']
+              fields: [ 'label', 'href']
             },
           },
-          fields: [ 'Label' ]
+          fields: [ 'label' ]
         },
         "TopikLink": {
           populate: {
-            "categories": {
+            "Categories": {
               fields: [ 'name', 'href' ]
             }
           },
-          fields: [ 'Label' ]
+          fields: [ 'label' ]
         },
         "Kontak": {
-          fields: [ 'email', 'AlamatCabang', 'AlamatPusat', 'CallCenter', 'Label' ]
+          fields: [ 'email', 'alamatCabang', 'alamatPusat', 'callCenter', 'label' ]
         },
         "SocialLink": {
-          fields: [ 'href', 'Label' ]
+          fields: [ 'label' ],
+          populate: {
+            "LinkExternal": {
+              fields: [ 'url', 'label' ]
+            }
+          }
         }
       },
     }
@@ -40,8 +45,8 @@ const footerQuery = qs.stringify({
 export default async function Footer() {
   const footerData = await getGlobalData<FooterQueryResponse>(footerQuery);
   const data = footerData.data.Footer;
-  const categories = data.TopikLink.categories;
-  const winnicode = data.winnicode;
+  const categories = data.TopikLink.Categories;
+  const winnicode = data.Winnicode;
   const kontak = data.Kontak;
   const social = data.SocialLink;
   console.dir(footerData, { depth: null });
@@ -58,24 +63,25 @@ export default async function Footer() {
         <div>
           <div className='flex py-5 px-2 space-x-24 text-blue-50'>
             <div>
-              <p>{winnicode.Label}</p>
+              <p>{winnicode.label}</p>
               <Winnicode links={winnicode.Link}/>
             </div>
             <div>
-              <p>{data.TopikLink.Label}</p>
+              <p>{data.TopikLink.label}</p>
               <Topik categories={categories}/>
             </div>
             <div className='max-w-1/6'>
-              <p>{kontak.Label}</p>
+              <p>{kontak.label}</p>
               <ul className='flex flex-col space-y-2 py-2 text-blue-100 text-sm font-light shrink'>
                 <li>{kontak.email}</li>
-                <li><span className='font-medium'>Alamat (Pusat):</span> {kontak.AlamatPusat} </li>
-                <li><span className='font-medium'>Alamat (Cabang):</span> {kontak.AlamatCabang} </li>
-                <li>{kontak.CallCenter}</li>
+                <li>{kontak.alamatPusat} </li>
+                <li>{kontak.alamatCabang} </li>
+                <li>{kontak.callCenter}</li>
               </ul>
             </div>
             <div>
-              <p>{social.Label}</p>
+              <p>{social.label}</p>
+              <Social data={social.LinkExternal}/>
             </div>
           </div>
         </div>

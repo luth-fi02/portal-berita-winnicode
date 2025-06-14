@@ -12,9 +12,9 @@ const navigationBarQuery = qs.stringify({
     populate:{
       "Navbar":{
         populate: {
-          "link":{
+          "Link":{
             populate: {
-              "categories":{
+              "Categories":{
                 fields: [ 'name', 'href']
               },
             }

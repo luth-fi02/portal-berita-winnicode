@@ -7,12 +7,12 @@ interface Category {
 
 interface Link {
     id: number;
-    categories: Category[];
+    Categories: Category[];
   }
 
 interface NavigationBar {
     id: number;
-    link: Link[];
+    Link: Link[];
   }
   
 export interface NavigationBarQueryResponse {

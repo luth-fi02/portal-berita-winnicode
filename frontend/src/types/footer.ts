@@ -11,7 +11,7 @@ export default interface FooterQueryResponse {
 
 interface Footer {
     id: number;
-    winnicode: Winnicode;
+    Winnicode: Winnicode;
     TopikLink: TopikLink;
     Kontak: Kontak;
     SocialLink: SocialLink;
@@ -19,20 +19,20 @@ interface Footer {
 
 interface Winnicode {
     id: number;
-    Label: string;
+    label: string;
     Link: Links[]
 }
 
     export interface Links {
         id: number;
-        name: string;
+        label: string;
         href: string;
     }
 
 interface TopikLink {
     id: number;
-    Label: string;
-    categories: Category[];
+    label: string;
+    Categories: Category[];
 }
 
     export interface Category {
@@ -44,15 +44,21 @@ interface TopikLink {
 
 interface Kontak {
     id: number;
-    Label: string;
+    label: string;
     email: string;
-    AlamatCabang: string;
-    AlamatPusat: string;
-    CallCenter: string;
+    alamatCabang: string;
+    alamatPusat: string;
+    callCenter: string;
 }
 
 interface SocialLink {
-    Label: string;
+    label: string;
     id: number;
-    href: string;
+    LinkExternal: LinkExternal[];
 }
+
+    export interface LinkExternal {
+        id: number;
+        url: string;
+        label: string;
+    }

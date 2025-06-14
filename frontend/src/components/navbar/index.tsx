@@ -9,7 +9,7 @@ export default function Categories({ strapiData }: { strapiData: NavigationBarQu
     const currentPath = usePathname();
     return (
             <ul className='space-x-6 text-center  '>
-              {strapiData.data.Navbar.link[0].categories.map((link: { href: string, name: string }) => 
+              {strapiData.data.Navbar.Link[0].Categories.map((link: { href: string, name: string }) => 
                 <Link 
                   key={link.href} 
                   className={classnames({

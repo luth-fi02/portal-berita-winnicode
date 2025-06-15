@@ -5,6 +5,7 @@ import { ArticleQueryResponse } from "@/types/article";
 import { type BlocksContent } from "@strapi/blocks-react-renderer";
 import BlockRendererClient from "@/app/[category]/[slug]/block-renderer-client"
 import qs from "qs";
+import NotFound from "@/app/not-found";
 
 function findArticle(slug: string){
   return qs.stringify({
@@ -33,7 +34,14 @@ export default async function CategoryPage({
   // eslint-disable-next-line @typescript-eslint/await-thenable
   const { slug } =await params;
   const strapiData = await getArticlesData<ArticleQueryResponse>(findArticle(slug))
+  if (!strapiData){
+    throw new Error("Failed to fetch article data from Strapi");
+  }
   const data = strapiData.data[0];
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if (!data){
+    return NotFound();
+  }
   const content: BlocksContent = strapiData.data[0].content;
 
   return (

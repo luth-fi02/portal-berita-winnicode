@@ -33,9 +33,11 @@ export default async function Navbar() {
             <SlMenu className='hover:text-blue-300 transition-colors text-white text-2xl'/>
           </Link>
         </div>
-        <div className='absolute'>
-          <Categories strapiData={strapiData}/>
-        </div>
+        {strapiData && (
+          <div className='absolute'>
+            <Categories strapiData={strapiData}/>
+          </div>
+        )}
         <TextField.Root placeholder="Search article....">
 	        <TextField.Slot>
 		        <FaMagnifyingGlass height="16" width="16" />

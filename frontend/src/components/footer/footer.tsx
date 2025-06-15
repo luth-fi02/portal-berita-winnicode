@@ -44,6 +44,7 @@ const footerQuery = qs.stringify({
 
 export default async function Footer() {
   const footerData = await getGlobalData<FooterQueryResponse>(footerQuery);
+  if (!footerData) return null; 
   const data = footerData.data.Footer;
   const categories = data.TopikLink.Categories;
   const winnicode = data.Winnicode;

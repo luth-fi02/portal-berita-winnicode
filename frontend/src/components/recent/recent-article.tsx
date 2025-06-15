@@ -68,7 +68,9 @@ export default async function RecentArticle() {
     return (
         <section>
             <h2 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl mb-5'>Terbaru</h2>
-            <RecentArticleCard strapiData = {strapiData}/>
+            {strapiData && (
+              <RecentArticleCard strapiData = {strapiData}/>
+            )}
         </section>   
     )
 }
@@ -83,7 +85,7 @@ export function RecentCategoryArticle(strapiData: CategoryRecentQueryResponse) {
 }
 
 export async function RecentHomepageCategoryArticle() {
-    const strapiData = await getCategoriesWithArticles()
+    const strapiData = await getCategoriesWithArticles();
     return (
     <section className='flex flex-col w-1/1'>
         <HomepageCategoryArticleCard strapiData={strapiData}/>
@@ -94,22 +96,26 @@ export async function RecentHomepageCategoryArticle() {
 
 async function getCategoriesWithArticles() {
     const homepageData = await getHomePageData<HomepageCategoryQueryResponse>(homepageCategoryQuery);
-  
-    const categories = homepageData.data.blocks[0].categories;
-  
-    // Fetch articles for each category in parallel
-    const categoriesWithArticles = await Promise.all(
-      categories.map(async (category) => {
-        const articlesData = await getArticlesData<CategoryRecentQueryResponse>(
-          filterByCategoryQuery(category.href, 1, 3)
-        );
-  
-        return {
-          ...category,
-          articles: articlesData.data,
-        };
-      })
-    );
-  
-    return categoriesWithArticles;
+    if (homepageData){
+      const categories = homepageData.data.blocks[0].categories;
+    
+      // Fetch articles for each category in parallel
+      const categoriesWithArticles = await Promise.all(
+        categories.map(async (category) => {
+          const articlesData = await getArticlesData<CategoryRecentQueryResponse>(
+            filterByCategoryQuery(category.href, 1, 3)
+          );
+          if (!articlesData) return {
+            ...category,
+            articles: [],
+          } 
+          return {
+            ...category,
+            articles: articlesData.data,
+          };
+        })
+      );
+    
+      return categoriesWithArticles;
+    } else return [];
   }

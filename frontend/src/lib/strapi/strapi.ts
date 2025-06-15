@@ -1,17 +1,17 @@
 
 
-async function fetchData<T>(url: string): Promise<T> {
+async function fetchData<T>(url: string): Promise<T | null> {
     try {
-      const response = await fetch(url, { next: {revalidate: 5} });
+      const response = await fetch(url, { cache: 'no-store' });
       const data = await response.json() as T;
       return data;
     } catch (error) {
       console.error("Error fetching data:", error);
-      throw error; // or return null;
+      return null;
     }
   }
 
-export async function getHomePageData<T>(query: string): Promise<T>{
+export async function getHomePageData<T>(query: string): Promise<T|null>{
     const baseUrl = getStrapiURL();
 
     const url = new URL("/api/home-page", baseUrl);
@@ -20,7 +20,7 @@ export async function getHomePageData<T>(query: string): Promise<T>{
     return await fetchData(url.href);
 }
 
-export async function getArticlesData<T>(query: string): Promise<T>{
+export async function getArticlesData<T>(query: string): Promise<T|null>{
     const baseUrl = getStrapiURL();
 
     const url = new URL("/api/articles", baseUrl);
@@ -29,7 +29,7 @@ export async function getArticlesData<T>(query: string): Promise<T>{
     return await fetchData(url.href);
 }
 
-export async function getCategoriesData<T>(query: string): Promise<T>{
+export async function getCategoriesData<T>(query: string): Promise<T|null>{
   const baseUrl = getStrapiURL();
 
   const url = new URL("/api/categories", baseUrl);
@@ -38,7 +38,7 @@ export async function getCategoriesData<T>(query: string): Promise<T>{
   return await fetchData(url.href);
 }
 
-export async function getGlobalData<T>(query: string): Promise<T>{
+export async function getGlobalData<T>(query: string): Promise<T|null>{
   const baseUrl = getStrapiURL();
 
   const url = new URL("/api/global", baseUrl);

@@ -17,6 +17,9 @@ export default async function CategoryPage({
 }) {
   //get categories from param and validate if it exist in strapi
   const strapiData = await getCategoriesData<CategoryQueryResponse>(categoryQuery);
+  if (!strapiData) {
+    throw new Error("Failed to fetch category data from Strapi.");
+  }
   const allowedParams = strapiData.data.map((data) => data.name.toLowerCase())
   // eslint-disable-next-line @typescript-eslint/await-thenable
   const { category } = await params;
@@ -36,15 +39,17 @@ export default async function CategoryPage({
         alt='logo'
         className='my-10'
       />
-      <h1 className='flex text-5xl font-bold py-20 text-shadow-lg'>{category.toUpperCase()}</h1>
-      <div className='flex w-full'>
-        <div className='flex-1/2'>
-          <RecentCategoryArticle data={articles.data}/>
+        <h1 className='flex text-5xl font-bold py-20 text-shadow-lg'>{category.toUpperCase()}</h1>
+        <div className='flex w-full'>
+          <div className='flex-1/2'>
+            {articles && (
+              <RecentCategoryArticle data={articles.data}/>
+            )}
+          </div>
+          <div className='flex-1/10 p-2 m-h'>
+            <h2>Populer</h2>
+          </div>
         </div>
-        <div className='flex-1/10 p-2 m-h'>
-          <h2>Populer</h2>
-        </div>
-      </div>
     </div>
   )
 }

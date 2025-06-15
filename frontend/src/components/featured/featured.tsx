@@ -36,7 +36,9 @@ export default async function Featured() {
     return (
         <section>
             <h2 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl m-2'>Berita Pilihan</h2>
-            <ArticleCard strapiData = {strapiData}/>
+            {strapiData && (
+                <ArticleCard strapiData = {strapiData}/>
+            )}
         </section>    
     )
 }

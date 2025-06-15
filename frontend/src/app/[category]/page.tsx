@@ -17,7 +17,6 @@ export default async function CategoryPage({
 }) {
   //get categories from param and validate if it exist in strapi
   const strapiData = await getCategoriesData<CategoryQueryResponse>(categoryQuery);
-  console.dir(strapiData, {depth: null})
   const allowedParams = strapiData.data.map((data) => data.name.toLowerCase())
   // eslint-disable-next-line @typescript-eslint/await-thenable
   const { category } = await params;

@@ -13,7 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Portal Berita - Winnicode Garuda Teknologi",
+  title: "Portal Berita",
   description: "Winnicode Garuda Teknologi",
 };
 

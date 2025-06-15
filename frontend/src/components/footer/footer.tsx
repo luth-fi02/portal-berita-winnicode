@@ -49,7 +49,6 @@ export default async function Footer() {
   const winnicode = data.Winnicode;
   const kontak = data.Kontak;
   const social = data.SocialLink;
-  console.dir(footerData, { depth: null });
   return (
     <nav className='flex flex-col p-5 bg-blue-500'>
         <div className='flex-1/3 mx-2'>

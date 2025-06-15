@@ -33,7 +33,6 @@ export default async function CategoryPage({
   // eslint-disable-next-line @typescript-eslint/await-thenable
   const { slug } =await params;
   const strapiData = await getArticlesData<ArticleQueryResponse>(findArticle(slug))
-//  console.dir(strapiData, {depth: null});
   const data = strapiData.data[0];
   const content: BlocksContent = strapiData.data[0].content;
 

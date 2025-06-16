@@ -1,10 +1,10 @@
 import { getArticlesData, getHomePageData } from '@/lib/strapi/strapi';
-import RecentArticleCard, { CategoryPageArticleCard, HomepageCategoryArticleCard } from './article-card';
+import ArticleCard, { CategoryPageArticleCard, HomepageCategoryArticleCard } from './article-card';
 import { HomepageCategoryQueryResponse, RecentQueryResponse } from '@/types/recent';
 import qs from 'qs';
 import { CategoryRecentQueryResponse } from '@/types/category';
 
-export const recentQuery = qs.stringify({
+const recentQuery = qs.stringify({
     sort: ['publishedAt:desc'],
     fields: ['title', 'publishedAt', 'description', 'slug'],
     populate: {
@@ -69,7 +69,7 @@ export default async function RecentArticle() {
         <section>
             <h2 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl mb-5'>Terbaru</h2>
             {strapiData && (
-              <RecentArticleCard strapiData = {strapiData}/>
+              <ArticleCard strapiData = {strapiData}/>
             )}
         </section>   
     )

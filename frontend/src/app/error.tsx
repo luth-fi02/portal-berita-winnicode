@@ -12,7 +12,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="space-y-4">
         <AiOutlineFrown className="h-24 w-24 text-pink-500" />
         <h1 className="text-4xl font-bold text-gray-900">

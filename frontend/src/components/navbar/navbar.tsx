@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import { TextField } from '@radix-ui/themes';
+import Form from 'next/form'
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import { SlMenu } from "react-icons/sl";
 import { getGlobalData } from '@/lib/strapi/strapi';
@@ -27,7 +27,7 @@ const navigationBarQuery = qs.stringify({
 export default async function Navbar() {
   const strapiData = await getGlobalData<NavigationBarQueryResponse>(navigationBarQuery)
   return (
-    <nav className='flex h-14 w-full px-5 items-center justify-center bg-blue-500 fixed top-0'>
+    <nav className='flex px-5 justify-center'>
         <div className='flex-1'>
           <Link href="/more">
             <SlMenu className='hover:text-blue-300 transition-colors text-white text-2xl'/>
@@ -38,11 +38,17 @@ export default async function Navbar() {
             <Categories strapiData={strapiData}/>
           </div>
         )}
-        <TextField.Root placeholder="Search article....">
-	        <TextField.Slot>
-		        <FaMagnifyingGlass height="16" width="16" />
-	        </TextField.Slot>
-        </TextField.Root>
+        <Form action="/search" className='space-x-2'>
+          <input 
+            placeholder="Search article...." 
+            className='bg-white rounded-sm text-gray-500 p-0.5 px-3' 
+            name="query" />
+          <button type="submit">
+            <FaMagnifyingGlass 
+            className='text-white hover:text-sky-200 rounded-sm cursor-pointer'
+            height="20" width="20" />
+          </button>
+        </Form>
     </nav>
   )
 }

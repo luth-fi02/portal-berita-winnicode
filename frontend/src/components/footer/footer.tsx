@@ -44,7 +44,18 @@ const footerQuery = qs.stringify({
 
 export default async function Footer() {
   const footerData = await getGlobalData<FooterQueryResponse>(footerQuery);
-  if (!footerData) return null; 
+  if (!footerData) return (
+    <nav className='flex flex-col p-5 bg-blue-500'>
+        <div className='flex-1/3 mx-2'>
+          <Image
+            src= {logo}
+            height={40}
+            width={40}
+            alt='logo'
+          />
+        </div>
+    </nav>
+  ); 
   const data = footerData.data.Footer;
   const categories = data.TopikLink.Categories;
   const winnicode = data.Winnicode;

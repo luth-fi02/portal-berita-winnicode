@@ -34,7 +34,7 @@ const homepageCategoryQuery = qs.stringify({
     }
 });
 
-export function filterByCategoryQuery(category: string, page: number, pageSize: number){
+export function filterByCategoryQuery(category: string, page: number){
     return qs.stringify({
       sort: ['publishedAt:desc'],
       fields: ['title', 'publishedAt', 'description', 'slug'],
@@ -57,8 +57,8 @@ export function filterByCategoryQuery(category: string, page: number, pageSize: 
         }
       },
       pagination: {
-        page: page,
-        pageSize: pageSize,
+        start: 0,
+        limit: 5*page,
       },
     });
   }
@@ -103,7 +103,7 @@ async function getCategoriesWithArticles() {
       const categoriesWithArticles = await Promise.all(
         categories.map(async (category) => {
           const articlesData = await getArticlesData<CategoryRecentQueryResponse>(
-            filterByCategoryQuery(category.href, 1, 3)
+            filterByCategoryQuery(category.href, 1)
           );
           if (!articlesData) return {
             ...category,

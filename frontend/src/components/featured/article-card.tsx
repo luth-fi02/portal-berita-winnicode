@@ -8,7 +8,7 @@ export default function ArticleCard({ strapiData }: { strapiData: FeaturedQueryR
     const block = strapiData.data.blocks[0];
     const article = block.article;
     return (
-    <Link className='flex transition-colors  hover:bg-blue-900/5' href={article.category.href + '/' + article.slug}>
+    <Link className='flex transition-colors  hover:bg-blue-100' href={article.category.href + '/' + article.slug}>
       <div>
         <StrapiImage
                 src= {block.thumbnail.url}

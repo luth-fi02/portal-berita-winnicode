@@ -1,4 +1,4 @@
-import Button from "@/components/button/button";
+import Button from "@/components/button/load-more";
 import { CategoryPageArticleCard } from "@/components/recent/article-card";
 import { getArticlesData } from "@/lib/strapi/strapi";
 import { CategoryRecentQueryResponse } from "@/types/category";
@@ -48,14 +48,13 @@ export default async function Search({
     const { page = '1', sort = 'asc', query = '' } = await searchParams
     const pageNumber = parseInt(page, 10) || 1
     const strapiData = await getArticlesData<CategoryRecentQueryResponse>(searchQuery(query, pageNumber, sort))
-    console.dir(strapiData, {depth: null})
     return (
         <section>
             <h2 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl mb-5'>Hasil Pencarian</h2>
             {strapiData && (
               <CategoryPageArticleCard strapiData = {strapiData}/>
             )}
-            <Button/>
+            <Button path='search'/>
         </section>
     )
   }

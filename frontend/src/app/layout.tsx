@@ -25,11 +25,15 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased`}
       >
-          <nav className='h-14 w-full bg-blue-500 content-center sticky top-0'>
-            <Navbar/>
-          </nav>
-          <main className='p-5 min-h-screen bg-white text-black'>{children}</main>
-          <Footer/>
+          <main className='bg-white text-black'>
+            <nav className='h-14 bg-blue-500 w-full content-center fixed top-0'>
+              <Navbar/>
+            </nav>
+            <div  className='min-h-screen p-5 w-full'>
+                  {children}
+            </div>
+            <Footer/>
+          </main>
       </body>
     </html>
   );

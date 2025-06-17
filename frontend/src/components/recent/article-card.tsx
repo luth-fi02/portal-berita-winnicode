@@ -14,7 +14,7 @@ export default function ArticleCard({ strapiData }: { strapiData: RecentQueryRes
         <Link 
           key={article.slug} 
           className={classnames({
-            'transition-colors  hover:bg-blue-900/5': true,
+            'transition-colors  hover:bg-blue-100': true,
           })} 
           href={article.category.href + '/' + article.slug}>
           <h3 className='hover:underline font-medium text-xl'>{article.title}</h3>
@@ -32,7 +32,7 @@ export function CategoryPageArticleCard ({ strapiData }: { strapiData: CategoryR
       <Link 
         key={article.slug} 
         className={classnames({
-          'transition-colors  hover:bg-blue-900/5 flex': true,
+          'transition-colors  hover:bg-blue-100 flex': true,
         })} 
         href={article.category.href + '/' + article.slug}>
           <StrapiImage
@@ -60,7 +60,7 @@ export function HomepageCategoryArticleCard ({ strapiData }: { strapiData: Homep
 
           <Link
             href={`/${data.href}`}
-            className='transition-colors hover:bg-blue-900/5 flex'
+            className='transition-colors hover:bg-blue-100 flex'
           >
             <h1 className='border-l-3 border-l-blue-950 pl-2 font-medium text-2xl'>
               {data.name}

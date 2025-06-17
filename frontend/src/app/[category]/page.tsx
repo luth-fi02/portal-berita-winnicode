@@ -5,6 +5,7 @@ import Image from 'next/image';
 import banner from '../../../public/image/banner-logo-hitam.png'
 import { notFound } from 'next/navigation';
 import { filterByCategoryQuery, RecentCategoryArticle } from '@/components/recent/recent-article';
+import Button from '@/components/button/load-more';
 
 const categoryQuery = qs.stringify({
     fields: ['name', 'href']
@@ -12,8 +13,10 @@ const categoryQuery = qs.stringify({
 
 export default async function CategoryPage({
   params,
+  searchParams,
 }: {
   params: { category: string };
+  searchParams: Promise<Record<string, string | undefined>>,
 }) {
   //get categories from param and validate if it exist in strapi
   const strapiData = await getCategoriesData<CategoryQueryResponse>(categoryQuery);
@@ -29,7 +32,10 @@ export default async function CategoryPage({
   }
 
   //get articles with same category as param
-  const articles = await getArticlesData<CategoryRecentQueryResponse>(filterByCategoryQuery(category, 1, 10))
+  const { page = '1' } = await searchParams
+  const pageNumber = parseInt(page, 10) || 1
+  const articles = await getArticlesData<CategoryRecentQueryResponse>(filterByCategoryQuery(category, pageNumber))
+  console.dir(articles, {depth: null})
   return (
     <div className='flex flex-col items-center justify-center'>
       <Image
@@ -45,6 +51,9 @@ export default async function CategoryPage({
             {articles && (
               <RecentCategoryArticle data={articles.data}/>
             )}
+            <div className='my-5'>
+              <Button path={category}/>
+            </div>
           </div>
           <div className='flex-1/10 p-2 m-h'>
             <h2>Populer</h2>

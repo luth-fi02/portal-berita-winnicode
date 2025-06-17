@@ -51,7 +51,7 @@ export default async function CategoryPage({
           alt='logo'
           width={500}
           height={500}
-          className='p-3 my-5 mt-20'
+          className='p-3 mb-5'
         />
       <div className="flex w-full">
         <div className="flex flex-col flex-3/4">

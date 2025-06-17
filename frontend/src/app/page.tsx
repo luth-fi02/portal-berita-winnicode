@@ -12,14 +12,14 @@ export default function Home() {
         width={500}
         height={500}
         alt='logo'
-        className='my-10'
+        className=''
       />
       <div className='flex w-full'>
         <div className='flex flex-col flex-1/2'>
           <Featured/>
           <Featured/>
         </div>
-        <div className='flex-1/10 p-2 m-h'>
+        <div className='flex-1/10 p-2'>
           <RecentArticle/>
         </div>
       </div>

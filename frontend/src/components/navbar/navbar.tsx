@@ -1,12 +1,14 @@
-import Link from 'next/link'
 import React from 'react'
 import Form from 'next/form'
+import Image from 'next/image';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
-import { SlMenu } from "react-icons/sl";
-import { getGlobalData } from '@/lib/strapi/strapi';
+import { getCategoriesData, getGlobalData } from '@/lib/strapi/strapi';
 import { NavigationBarQueryResponse } from '@/types/navbar';
 import Categories from '@/components/navbar';
+import More from './more/show-more'
+import logo from '../../../public/image/logo.png'
 import qs from "qs";
+import CategoryQueryResponse from '@/types/category';
 
 const navigationBarQuery = qs.stringify({
     populate:{
@@ -24,20 +26,33 @@ const navigationBarQuery = qs.stringify({
     },
 });
 
+const categoryQuery = qs.stringify({
+  fields: ['name', 'href']
+});
+
 export default async function Navbar() {
   const strapiData = await getGlobalData<NavigationBarQueryResponse>(navigationBarQuery)
+  const buttonData = await getCategoriesData<CategoryQueryResponse>(categoryQuery);
   return (
-    <nav className='flex px-5 justify-center'>
-        <div className='flex-1'>
-          <Link href="/more">
-            <SlMenu className='hover:text-blue-300 transition-colors text-white text-2xl'/>
-          </Link>
+    <nav className='flex px-5 justify-center items-center'>
+        <div className='absolute left-5'>
+        <Image
+          src= {logo}
+          width={40}
+          height={40}
+          alt='logo'
+          className=''
+        />
         </div>
         {strapiData && (
-          <div className='absolute'>
+          <div className='absolute flex space-x-6'>
             <Categories strapiData={strapiData}/>
+            {buttonData && (
+              <More data={buttonData}/>
+            )}
           </div>
         )}
+        <div className='absolute right-5'>
         <Form action="/search" className='space-x-2'>
           <input 
             placeholder="Search article...." 
@@ -49,6 +64,7 @@ export default async function Navbar() {
             height="20" width="20" />
           </button>
         </Form>
+        </div>
     </nav>
   )
 }

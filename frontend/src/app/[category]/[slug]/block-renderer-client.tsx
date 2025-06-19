@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 
 import {
@@ -11,6 +12,7 @@ export default function BlockRendererClient({
 }: {
   readonly content: BlocksContent;
 }) {
+  console.dir(content,{depth:null})
   if (content.length)
   return (
     <BlocksRenderer

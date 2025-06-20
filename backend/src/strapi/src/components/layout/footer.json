@@ -6,16 +6,11 @@
   },
   "options": {},
   "attributes": {
-    "winnicode": {
+    "Winnicode": {
       "displayName": "winnicode",
       "type": "component",
       "repeatable": false,
       "component": "components.winnicode"
-    },
-    "TopikLink": {
-      "type": "component",
-      "repeatable": false,
-      "component": "components.nav-bar-link"
     },
     "Kontak": {
       "displayName": "Kontak",
@@ -28,6 +23,11 @@
       "type": "component",
       "repeatable": false,
       "component": "components.social-link"
+    },
+    "TopikLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.topik-link"
     }
   }
 }

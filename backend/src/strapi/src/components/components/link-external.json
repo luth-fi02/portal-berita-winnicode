@@ -1,12 +1,12 @@
 {
-  "collectionName": "components_components_links",
+  "collectionName": "components_components_link_externals",
   "info": {
-    "displayName": "Link",
+    "displayName": "LinkExternal",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "href": {
+    "url": {
       "type": "string",
       "required": true
     },

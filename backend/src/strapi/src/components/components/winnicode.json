@@ -12,8 +12,9 @@
       "repeatable": true,
       "component": "components.link"
     },
-    "Title": {
-      "type": "string"
+    "label": {
+      "type": "string",
+      "required": true
     }
   }
 }

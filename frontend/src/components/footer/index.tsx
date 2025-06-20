@@ -32,7 +32,7 @@ export function Winnicode({ links }: { links: Links[] }) {
             'text-blue-100': true,
             'hover:text-blue-300 transition-colors text-sm font-light': true,
           })} 
-          href={link.href}>
+          href={'/' + link.href }>
           {link.label}
         </Link>)}
       </ul>

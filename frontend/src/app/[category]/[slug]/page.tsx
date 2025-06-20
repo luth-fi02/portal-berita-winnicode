@@ -53,7 +53,7 @@ export default async function CategoryPage({
           height={500}
           className='p-3 mb-5 mt-20'
         />
-      <div className="flex w-full space-x-5">
+      <div className="flex flex-col w-full space-y-5 md:space-x-10 md:flex-row md:flex">
         <div className="flex flex-col flex-3/4">
           <h1 className="text-4xl font-bold">{data.title}</h1>
           <h4 className="font-medium text-xs p-2 text-gray-400">{new Date(data.publishedAt).toDateString()} {data.author.name}</h4>

@@ -14,7 +14,6 @@
     "blocks": {
       "type": "dynamiczone",
       "components": [
-        "layout.navigation-bar",
         "layout.featured",
         "layout.by-category"
       ]

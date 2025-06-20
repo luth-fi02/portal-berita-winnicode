@@ -45,11 +45,13 @@ export default async function Navbar() {
         />
         </div>
         {strapiData && (
-          <div className='absolute flex space-x-6'>
-            <Categories strapiData={strapiData}/>
-            {buttonData && (
-              <More data={buttonData}/>
-            )}
+          <div className='hidden xl:block absolute'>
+            <div className='flex space-x-6'>
+              <Categories strapiData={strapiData}/>
+              {buttonData && (
+                <More data={buttonData}/>
+              )}
+            </div>
           </div>
         )}
         <div className='absolute right-5'>

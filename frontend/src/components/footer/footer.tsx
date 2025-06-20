@@ -72,7 +72,7 @@ export default async function Footer() {
           />
         </div>
         <div>
-          <div className='flex py-5 px-2 space-x-24 text-blue-50'>
+          <div className='flex flex-col space-y-15 text-blue-50 md:flex-row md:py-5 md:px-2 md:space-x-24 '>
             <div>
               <p>{winnicode.label}</p>
               <Winnicode links={winnicode.Link}/>
@@ -81,7 +81,7 @@ export default async function Footer() {
               <p>{data.TopikLink.label}</p>
               <Topik categories={categories}/>
             </div>
-            <div className='max-w-1/6'>
+            <div className='md:max-w-1/5'>
               <p>{kontak.label}</p>
               <ul className='flex flex-col space-y-2 py-2 text-blue-100 text-sm font-light shrink'>
                 <li>{kontak.email}</li>

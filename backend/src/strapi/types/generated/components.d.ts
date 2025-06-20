@@ -3,26 +3,50 @@ import type { Schema, Struct } from '@strapi/strapi';
 export interface ComponentsKontak extends Struct.ComponentSchema {
   collectionName: 'components_components_kontaks';
   info: {
-    displayName: 'Kontak';
+    description: '';
+    displayName: 'kontak';
   };
-  attributes: {};
+  attributes: {
+    alamatCabang: Schema.Attribute.Text & Schema.Attribute.Required;
+    alamatPusat: Schema.Attribute.Text & Schema.Attribute.Required;
+    callCenter: Schema.Attribute.String & Schema.Attribute.Required;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+  };
 }
 
 export interface ComponentsLink extends Struct.ComponentSchema {
   collectionName: 'components_components_links';
   info: {
+    description: '';
     displayName: 'Link';
   };
-  attributes: {};
+  attributes: {
+    href: Schema.Attribute.String & Schema.Attribute.Required;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ComponentsLinkExternal extends Struct.ComponentSchema {
+  collectionName: 'components_components_link_externals';
+  info: {
+    description: '';
+    displayName: 'LinkExternal';
+  };
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
 }
 
 export interface ComponentsNavBarLink extends Struct.ComponentSchema {
   collectionName: 'components_components_nav_bar_links';
   info: {
+    description: '';
     displayName: 'NavBarLink';
   };
   attributes: {
-    categories: Schema.Attribute.Relation<
+    Categories: Schema.Attribute.Relation<
       'oneToMany',
       'api::category.category'
     >;
@@ -32,9 +56,28 @@ export interface ComponentsNavBarLink extends Struct.ComponentSchema {
 export interface ComponentsSocialLink extends Struct.ComponentSchema {
   collectionName: 'components_components_social_links';
   info: {
+    description: '';
     displayName: 'SocialLink';
   };
-  attributes: {};
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    LinkExternal: Schema.Attribute.Component<'components.link-external', true>;
+  };
+}
+
+export interface ComponentsTopikLink extends Struct.ComponentSchema {
+  collectionName: 'components_components_topik_links';
+  info: {
+    description: '';
+    displayName: 'TopikLink';
+  };
+  attributes: {
+    Categories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category.category'
+    >;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+  };
 }
 
 export interface ComponentsWinnicode extends Struct.ComponentSchema {
@@ -44,8 +87,8 @@ export interface ComponentsWinnicode extends Struct.ComponentSchema {
     displayName: 'winnicode';
   };
   attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
     Link: Schema.Attribute.Component<'components.link', true>;
-    Title: Schema.Attribute.String;
   };
 }
 
@@ -87,8 +130,8 @@ export interface LayoutFooter extends Struct.ComponentSchema {
   attributes: {
     Kontak: Schema.Attribute.Component<'components.kontak', false>;
     SocialLink: Schema.Attribute.Component<'components.social-link', false>;
-    TopikLink: Schema.Attribute.Component<'components.nav-bar-link', false>;
-    winnicode: Schema.Attribute.Component<'components.winnicode', false>;
+    TopikLink: Schema.Attribute.Component<'components.topik-link', false>;
+    Winnicode: Schema.Attribute.Component<'components.winnicode', false>;
   };
 }
 
@@ -99,7 +142,7 @@ export interface LayoutNavigationBar extends Struct.ComponentSchema {
     displayName: 'Navigation Bar';
   };
   attributes: {
-    link: Schema.Attribute.Component<'components.nav-bar-link', true>;
+    Link: Schema.Attribute.Component<'components.nav-bar-link', true>;
   };
 }
 
@@ -118,8 +161,10 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'components.kontak': ComponentsKontak;
       'components.link': ComponentsLink;
+      'components.link-external': ComponentsLinkExternal;
       'components.nav-bar-link': ComponentsNavBarLink;
       'components.social-link': ComponentsSocialLink;
+      'components.topik-link': ComponentsTopikLink;
       'components.winnicode': ComponentsWinnicode;
       'layout.by-category': LayoutByCategory;
       'layout.featured': LayoutFeatured;

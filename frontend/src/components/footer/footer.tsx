@@ -72,7 +72,7 @@ export default async function Footer() {
           />
         </div>
         <div>
-          <div className='flex flex-col space-y-15 text-blue-50 md:flex-row md:py-5 md:px-2 md:space-x-24 '>
+          <div className='flex flex-col space-y-10 py-5 text-blue-50 md:flex-row md:py-5 md:px-2 md:space-x-24 '>
             <div>
               <p>{winnicode.label}</p>
               <Winnicode links={winnicode.Link}/>

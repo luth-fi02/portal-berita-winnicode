@@ -112,12 +112,7 @@ export interface LayoutFeatured extends Struct.ComponentSchema {
     displayName: 'Featured';
   };
   attributes: {
-    article: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>;
-    description: Schema.Attribute.Text & Schema.Attribute.Required;
-    thumbnail: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    > &
-      Schema.Attribute.Required;
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
   };
 }
 

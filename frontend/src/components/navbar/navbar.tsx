@@ -5,7 +5,7 @@ import { FaMagnifyingGlass } from 'react-icons/fa6';
 import { getCategoriesData, getGlobalData } from '@/lib/strapi/strapi';
 import { NavigationBarQueryResponse } from '@/types/navbar';
 import Categories from '@/components/navbar';
-import More from './more/show-more'
+import More, { Burger } from './more/show-more'
 import logo from '../../../public/image/logo.png'
 import qs from "qs";
 import CategoryQueryResponse from '@/types/category';
@@ -35,14 +35,19 @@ export default async function Navbar() {
   const buttonData = await getCategoriesData<CategoryQueryResponse>(categoryQuery);
   return (
     <nav className='flex px-5 justify-center items-center'>
-        <div className='absolute left-5'>
-        <Image
-          src= {logo}
-          width={40}
-          height={40}
-          alt='logo'
-          className=''
-        />
+        <div className='hidden xl:block absolute left-5'>
+          <Image
+            src= {logo}
+            width={40}
+            height={40}
+            alt='logo'
+            className=''
+          />
+        </div>
+        <div className='xl:hidden absolute left-5'>
+          {buttonData && (
+                  <Burger data={buttonData}/>
+                )}
         </div>
         {strapiData && (
           <div className='hidden xl:block absolute'>

@@ -6,6 +6,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import classnames from 'classnames';
 import CategoryQueryResponse from '@/types/category';
 import Link from "next/link";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 function ShowMore( {data} : {data:CategoryQueryResponse} ) {
   const [isExpanded, setIsExpanded] = useState(false );
@@ -38,6 +39,40 @@ function ShowMore( {data} : {data:CategoryQueryResponse} ) {
               className={classnames({
                 'text-blue-100': true,
                 'hover:text-gray-300 transition-colors text-sm font-light': true,
+              })} 
+              href={'/' + link.href }>
+              {link.name}
+            </Link>)}
+        </ul>
+      </aside>
+    </div>
+  )
+}
+
+export function Burger( {data} : {data:CategoryQueryResponse} ) {
+  const [isExpanded, setIsExpanded] = useState(false );
+  const ToggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
+  return (
+    <div>
+      <button
+        className='text-blue-100 text-3xl flex items-center gap-x-2 hover:cursor-pointer hover:text-blue-300 transition-colors'
+        onClick={ToggleExpand}>
+        <RxHamburgerMenu/>
+      </button>
+      <aside className={classnames({
+        'opacity-95 bg-blue-500 fixed left-0 h-screen': isExpanded,
+        'text-blue-100 flex flex-col':true,
+        'hidden w-10': !isExpanded,
+      })}>
+        <ul className='flex flex-col gap-y-5 p-5 mt-5'>
+          {data.data.map((link: { href: string, name: string }) => 
+            <Link 
+              key={link.href} 
+              className={classnames({
+                'text-blue-100': true,
+                'hover:text-gray-300 transition-colors text-lg font-light': true,
               })} 
               href={'/' + link.href }>
               {link.name}

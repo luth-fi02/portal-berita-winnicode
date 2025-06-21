@@ -17,8 +17,8 @@ export default function ArticleCard({ strapiData }: { strapiData: RecentQueryRes
             'transition-colors  hover:bg-blue-100': true,
           })} 
           href={article.category.href + '/' + article.slug}>
-          <h3 className='hover:underline font-medium text-xl'>{article.title}</h3>
-          <p className='hover:underline font-light text-xs'>{new Date(article.publishedAt).toDateString()}</p>
+          <h3 className='hover:underline font-medium text-gray-800 text-xl'>{article.title}</h3>
+          <p className='hover:underline font-light text-gray-400 text-xs'>{new Date(article.publishedAt).toDateString()}</p>
         </Link>)}
     </ul>
     )
@@ -54,7 +54,7 @@ export function CategoryPageArticleCard ({ strapiData }: { strapiData: CategoryR
 
 export function HomepageCategoryArticleCard ({ strapiData }: { strapiData: HomepageCategoryArticlesData[]}) {
   return (
-    <ul className='grid grid-cols-3 mt-5'>
+    <ul className='lg:grid lg:grid-cols-3 mt-5'>
       {strapiData.map((data: { href: string; name: string; articles: Articles[] }) => (
         <div key={data.href} className='p-2'>
 
@@ -70,10 +70,10 @@ export function HomepageCategoryArticleCard ({ strapiData }: { strapiData: Homep
           {/* Article List */}
           {data.articles.map((article) => (
             <Link key={article.slug} href={`/${data.href}/${article.slug}`}>
-              <div className='flex border-y py-2 my-2 hover:bg-blue-100'>
+              <div className='flex border-t py-2 my-2 hover:bg-blue-100'>
                 <div className='flex flex-col w-2/3'>
-                  <h1 className='font-medium text-base'>{article.title}</h1>
-                  <p className='font-light text-sm'>{new Date(article.publishedAt).toDateString()}</p>
+                  <h1 className='font-medium text-gray-800 text-lg'>{article.title}</h1>
+                  <p className='font-thin text-gray-400 text-sm'>{new Date(article.publishedAt).toDateString()}</p>
                 </div>
                     <StrapiImage
                         src= {article.thumbnail.url}

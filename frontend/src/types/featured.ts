@@ -1,37 +1,37 @@
-interface Category {
+export interface Category {
   id: number;
   documentId: string;
   href: string;
 }
 
-interface Author {
+export interface Author {
   id: number;
   documentId: string;  
   name: string;
 }
 
-interface Thumbnail {
+export interface Thumbnail {
   id: number;
   documentId: string;
   url: string;
 }
 
-interface FeaturedArticle {
+export interface FeaturedArticle {
     id: number;
     documentId: string;
     title: string;
     publishedAt: string;
     slug: string;
+    description: string;
     author: Author;
     category: Category;
+    thumbnail: Thumbnail;
   }
   
 interface FeaturedBlock {
     __component: string;
-    id: number;
-    description: string;
-    thumbnail: Thumbnail;  
-    article: FeaturedArticle;
+    id: number; 
+    articles: FeaturedArticle[];
 }
 
 export interface FeaturedQueryResponse {

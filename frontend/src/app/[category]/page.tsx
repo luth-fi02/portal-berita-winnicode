@@ -6,6 +6,7 @@ import banner from '../../../public/image/banner-logo-hitam.png'
 import { notFound } from 'next/navigation';
 import { filterByCategoryQuery, RecentCategoryArticle } from '@/components/recent/recent-article';
 import Button from '@/components/button/load-more';
+import Featured from '@/components/featured/featured';
 
 const categoryQuery = qs.stringify({
     fields: ['name', 'href']
@@ -45,7 +46,7 @@ export default async function CategoryPage({
         className='my-10'
       />
         <h1 className='flex text-5xl font-bold py-20 text-shadow-lg'>{category.toUpperCase()}</h1>
-        <div className='flex w-full'>
+        <div className='flex flex-col lg:flex-row w-full'>
           <div className='flex-1/2'>
             {articles && (
               <RecentCategoryArticle data={articles.data}/>
@@ -54,8 +55,8 @@ export default async function CategoryPage({
               <Button path={category}/>
             </div>
           </div>
-          <div className='flex-1/10 p-2 m-h'>
-            <h2>Populer</h2>
+          <div className='flex-1/3 p-2 m-h'>
+            <Featured/>
           </div>
         </div>
     </div>

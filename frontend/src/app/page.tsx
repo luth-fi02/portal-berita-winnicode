@@ -14,11 +14,11 @@ export default function Home() {
         alt='logo'
         className=''
       />
-      <div className='flex flex-col lg:flex-row w-full'>
+      <div className='flex flex-col lg:flex-row w-full space-x-5'>
         <div className='md:flex-1/2'>
           <Featured/>
         </div>
-        <div className='md:flex-1/10 md:p-2'>
+        <div className='md:flex-1/10'>
           <RecentArticle/>
         </div>
       </div>

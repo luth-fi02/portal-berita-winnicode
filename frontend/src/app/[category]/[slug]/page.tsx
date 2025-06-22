@@ -6,6 +6,7 @@ import { type BlocksContent } from "@strapi/blocks-react-renderer";
 import BlockRendererClient from "@/app/[category]/[slug]/block-renderer-client"
 import qs from "qs";
 import NotFound from "@/app/not-found";
+import Related from "@/components/related/related";
 
 function findArticle(slug: string){
   return qs.stringify({
@@ -22,6 +23,17 @@ function findArticle(slug: string){
         'author': {
              fields: ['name']
         },
+        'related':{
+          fields: ['title', 'slug'],
+          populate: {
+            'thumbnail': {
+              fields: ['url']
+            },
+            'category': {
+              fields: ['href']
+            }
+          }
+        }
     },
   });
 }
@@ -34,6 +46,7 @@ export default async function CategoryPage({
   // eslint-disable-next-line @typescript-eslint/await-thenable
   const { slug } =await params;
   const strapiData = await getArticlesData<ArticleQueryResponse>(findArticle(slug))
+  console.dir(strapiData, {depth: null})
   if (!strapiData){
     throw new Error("Failed to fetch article data from Strapi");
   }
@@ -65,6 +78,7 @@ export default async function CategoryPage({
           <RecentArticle/>
         </div>
       </div>
+        <Related data={data.related}/>
     </div>
   )
 }

@@ -16,7 +16,7 @@ export default function ArticleCard({ strapiData }: { strapiData: RecentQueryRes
           className={classnames({
             'transition-colors  hover:bg-blue-100': true,
           })} 
-          href={article.category.href + '/' + article.slug}>
+          href={'/' + article.category.href + '/' + article.slug}>
           <h3 className='hover:underline font-medium text-gray-800 text-xl'>{article.title}</h3>
           <p className='hover:underline font-light text-gray-400 text-xs'>{new Date(article.publishedAt).toDateString()}</p>
         </Link>)}
@@ -60,7 +60,7 @@ export function HomepageCategoryArticleCard ({ strapiData }: { strapiData: Homep
 
           <Link
             href={`/${data.href}`}
-            className='transition-colors hover:bg-blue-100 flex'
+            className='transition-colors hover:bg-blue-100 hover:underline flex'
           >
             <h1 className='border-l-3 border-l-blue-950 pl-2 font-medium text-2xl'>
               {data.name}
@@ -70,9 +70,9 @@ export function HomepageCategoryArticleCard ({ strapiData }: { strapiData: Homep
           {/* Article List */}
           {data.articles.map((article) => (
             <Link key={article.slug} href={`/${data.href}/${article.slug}`}>
-              <div className='flex border-t py-2 my-2 hover:bg-blue-100'>
+              <div className='flex border-t py-2 my-2 transition-colors hover:bg-blue-100'>
                 <div className='flex flex-col w-2/3'>
-                  <h1 className='font-medium text-gray-800 text-lg'>{article.title}</h1>
+                  <h1 className='font-medium text-gray-800 text-lg hover:underline'>{article.title}</h1>
                   <p className='font-thin text-gray-400 text-sm'>{new Date(article.publishedAt).toDateString()}</p>
                 </div>
                     <StrapiImage

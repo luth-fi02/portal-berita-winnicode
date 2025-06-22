@@ -20,6 +20,7 @@ interface Article {
     content: BlocksContent;
     thumbnail: Thumbnail;
     author: Author;
+    related: RelatedArticle[];
 }
 
 interface Thumbnail {
@@ -32,4 +33,19 @@ interface Author {
     id: number;
     documentId: string;
     name: string;
+}
+
+export interface RelatedArticle {
+    id: number;
+    documentId: string;
+    title: string;
+    slug: string;
+    thumbnail: Thumbnail;
+    category: Category;
+}
+
+interface Category {
+    id: number;
+    documentId: string;
+    href: string;
 }

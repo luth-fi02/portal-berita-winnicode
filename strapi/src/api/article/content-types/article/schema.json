@@ -48,6 +48,11 @@
     "description": {
       "type": "text",
       "required": true
+    },
+    "related": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article"
     }
   }
 }

@@ -49,10 +49,12 @@ export default async function Search({
     const pageNumber = parseInt(page, 10) || 1
     const strapiData = await getArticlesData<CategoryRecentQueryResponse>(searchQuery(query, pageNumber, sort))
     return (
-        <section>
+        <section className="pt-14">
             <h2 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl mb-5'>Hasil Pencarian</h2>
-            {strapiData && (
-              <CategoryPageArticleCard strapiData = {strapiData}/>
+            {strapiData && strapiData.data.length > 0 ? (
+              <CategoryPageArticleCard strapiData={strapiData} />
+            ) : (
+              <p>Maaf, tidak ada hasil yang cocok dengan pencarian Anda.</p>
             )}
             <Button path='search'/>
         </section>

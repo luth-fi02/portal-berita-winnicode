@@ -1,12 +1,16 @@
 'use client'
 
+import { useState, useEffect } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 
 function LoadMore({path}:{path:string}) {
     const router = useRouter()
     const searchParams = useSearchParams()
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleLoadMore = () => {
+      setIsLoading(true)
+
       const currentPage = parseInt(searchParams.get('page') ?? '1', 10)
       const newPage = currentPage + 1
 
@@ -15,13 +19,18 @@ function LoadMore({path}:{path:string}) {
 
       router.push(`/${path}?${params.toString()}`, {scroll:false})
     }
+
+    useEffect(() => {
+      setIsLoading(false)
+    }, [searchParams.toString()]) // Trigger when searchParams update
+
   return (
     <div className="text-center">
     <button
         className="font-semibold text-white bg-rose-400 p-4 rounded-xl hover:cursor-pointer hover:bg-rose-500 hover:outline-3 hover:outline-offset-1"
         onClick={handleLoadMore}
     >
-      Muat Lebih Banyak
+      {isLoading ? 'Sedang Memuat...' : 'Muat Lebih Banyak'}
     </button>
 </div>
   )

@@ -69,7 +69,7 @@ export default async function CategoryPage({
       <div className="flex flex-col w-full space-y-5 md:space-x-10 md:flex-row md:flex">
         <div className="flex flex-col flex-3/4">
           <h1 className="text-4xl font-bold">{data.title}</h1>
-          <h4 className="font-medium text-xs p-2 text-gray-400">{new Date(data.publishedAt).toDateString()} {data.author.name}</h4>
+          <h4 className="font-medium text-xs py-2 text-gray-400">{new Date(data.publishedAt).toDateString()} {data.author.name}</h4>
           <div className="prose max-w-max">
             <BlockRendererClient content={content}/>
           </div>
@@ -78,7 +78,9 @@ export default async function CategoryPage({
           <RecentArticle/>
         </div>
       </div>
-        <Related data={data.related}/>
+      {data.related.length > 0 && (
+          <Related data={data.related}/>
+      )}
     </div>
   )
 }

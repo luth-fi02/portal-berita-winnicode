@@ -36,5 +36,14 @@ interface Article {
 
 export interface CategoryRecentQueryResponse {
     data: Article[];
+    meta: {
+      pagination: Pagination;
+    }
 }
+
+  interface Pagination {
+      start: number;
+      limit: number;
+      total: number;
+  }
 

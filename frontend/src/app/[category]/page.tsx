@@ -36,6 +36,7 @@ export default async function CategoryPage({
   const { page = '1' } = await searchParams
   const pageNumber = parseInt(page, 10) || 1
   const articles = await getArticlesData<CategoryRecentQueryResponse>(filterByCategoryQuery(category, pageNumber))
+  console.dir(articles,{depth:null})
   return (
     <div className='flex flex-col items-center justify-center'>
       <Image
@@ -49,11 +50,15 @@ export default async function CategoryPage({
         <div className='flex flex-col lg:flex-row w-full'>
           <div className='flex-1/2'>
             {articles && (
-              <RecentCategoryArticle data={articles.data}/>
+              <>
+                <RecentCategoryArticle data={articles.data} meta={articles.meta}/>              
+                  <div className='my-5'>
+                    {articles.meta.pagination.total > articles.meta.pagination.limit && (
+                      <Button path={category} />
+                    )}
+                  </div>
+              </>
             )}
-            <div className='my-5'>
-              <Button path={category}/>
-            </div>
           </div>
           <div className='flex-1/3 p-2 m-h'>
             <Featured/>

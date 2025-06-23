@@ -9,7 +9,7 @@ export default function ArticleCard({ strapiData }: { strapiData: FeaturedQueryR
     return (
     <ul className='space-y-10'>
       {data.articles.map((article: {category: Category, slug: string, thumbnail: Thumbnail, title: string, description: string, author: Author}) => (
-        <Link className='border-t grid md:grid-cols-3 transition-colors  hover:bg-blue-100' 
+        <Link className='border-t grid md:grid-cols-3 transition-colors  hover:bg-biru/5' 
           href={article.category.href + '/' + article.slug}
           key={article.slug}
         >

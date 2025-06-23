@@ -18,3 +18,9 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@theme {
+  --color-biru2: #5870f6;
+  --color-biru: #60b3f9;
+  --color-pink1: #ed6fc0; 
+}

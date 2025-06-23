@@ -45,7 +45,7 @@ const footerQuery = qs.stringify({
 export default async function Footer() {
   const footerData = await getGlobalData<FooterQueryResponse>(footerQuery);
   if (!footerData) return (
-    <nav className='flex flex-col p-5 bg-blue-500'>
+    <nav className='flex flex-col p-5 bg-biru2'>
         <div className='flex-1/3 mx-2'>
           <Image
             src= {logo}
@@ -62,7 +62,7 @@ export default async function Footer() {
   const kontak = data.Kontak;
   const social = data.SocialLink;
   return (
-    <nav className='flex flex-col p-5 bg-blue-500'>
+    <nav className='flex flex-col p-5 bg-biru2'>
         <div className='flex-1/3 mx-2'>
           <Image
             src= {logo}

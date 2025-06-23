@@ -13,7 +13,7 @@ export default function Topik({ categories }: { categories: Category[] }) {
                   key={link.href} 
                   className={classnames({
                     'text-blue-100': true,
-                    'hover:text-blue-300 transition-colors text-sm font-light': true,
+                    'hover:text-biru transition-colors text-sm font-light': true,
                   })} 
                   href={'/' + link.href }>
                   {link.name}
@@ -30,7 +30,7 @@ export function Winnicode({ links }: { links: Links[] }) {
           key={link.href} 
           className={classnames({
             'text-blue-100': true,
-            'hover:text-blue-300 transition-colors text-sm font-light': true,
+            'hover:text-biru transition-colors text-sm font-light': true,
           })} 
           href={'/' + link.href }>
           {link.label}
@@ -47,7 +47,7 @@ export function Social({ data }: { data: LinkExternal[] }) {
         key={data.id} 
         className={classnames({
           'text-blue-100': true,
-          'hover:text-blue-300 transition-colors text-sm font-light': true,
+          'hover:text-biru transition-colors text-sm font-light': true,
         })} 
         href={data.url}>
         <div className='flex gap-2'>

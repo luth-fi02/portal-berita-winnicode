@@ -14,7 +14,7 @@ export default function ArticleCard({ strapiData }: { strapiData: RecentQueryRes
         <Link 
           key={article.slug} 
           className={classnames({
-            'transition-colors  hover:bg-blue-100': true,
+            'transition-colors  hover:bg-biru/5': true,
           })} 
           href={'/' + article.category.href + '/' + article.slug}>
           <h3 className='hover:underline font-medium text-gray-800 text-xl'>{article.title}</h3>
@@ -32,7 +32,7 @@ export function CategoryPageArticleCard ({ strapiData }: { strapiData: CategoryR
       <Link 
         key={article.slug} 
         className={classnames({
-          'transition-colors  hover:bg-blue-100 flex': true,
+          'transition-colors  hover:bg-biru/5 flex': true,
         })} 
         href={article.category.href + '/' + article.slug}>
           <StrapiImage
@@ -60,9 +60,9 @@ export function HomepageCategoryArticleCard ({ strapiData }: { strapiData: Homep
 
           <Link
             href={`/${data.href}`}
-            className='transition-colors hover:bg-blue-100 hover:underline flex'
+            className='transition-colors hover:bg-biru/5 hover:underline flex'
           >
-            <h1 className='border-l-3 border-l-blue-950 pl-2 font-medium text-2xl'>
+            <h1 className='border-l-3 border-l-pink1 pl-2 font-medium text-2xl'>
               {data.name}
             </h1>
           </Link>
@@ -70,7 +70,7 @@ export function HomepageCategoryArticleCard ({ strapiData }: { strapiData: Homep
           {/* Article List */}
           {data.articles.map((article) => (
             <Link key={article.slug} href={`/${data.href}/${article.slug}`}>
-              <div className='flex border-t py-2 my-2 transition-colors hover:bg-blue-100'>
+              <div className='flex border-t py-2 my-2 transition-colors hover:bg-biru/5'>
                 <div className='flex flex-col w-2/3'>
                   <h1 className='font-medium text-gray-800 text-lg hover:underline'>{article.title}</h1>
                   <p className='font-thin text-gray-400 text-sm'>{new Date(article.publishedAt).toDateString()}</p>

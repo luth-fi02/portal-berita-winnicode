@@ -25,8 +25,8 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased`}
       >
-          <main className='bg-white text-black'>
-            <nav className='h-14 bg-blue-500 w-full content-center fixed top-0'>
+          <main className='bg-gray-200 text-black'>
+            <nav className='h-14 bg-biru2 w-full content-center fixed top-0'>
               <Navbar/>
             </nav>
             <div  className='min-h-screen p-5 my-9 w-full'>

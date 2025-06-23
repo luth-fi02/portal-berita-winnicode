@@ -27,7 +27,7 @@ function LoadMore({path}:{path:string}) {
   return (
     <div className="text-center">
     <button
-        className="font-semibold text-white bg-rose-400 p-4 rounded-xl hover:cursor-pointer hover:bg-rose-500 hover:outline-3 hover:outline-offset-1"
+        className="font-semibold text-white bg-pink1 p-4 rounded-xl hover:cursor-pointer hover:bg-pink1/90 hover:outline-3 hover:outline-biru/20"
         onClick={handleLoadMore}
     >
       {isLoading ? 'Sedang Memuat...' : 'Muat Lebih Banyak'}

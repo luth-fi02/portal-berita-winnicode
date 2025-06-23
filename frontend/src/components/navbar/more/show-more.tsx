@@ -27,11 +27,11 @@ function ShowMore( {data} : {data:CategoryQueryResponse} ) {
         )}
       </button>
       <aside className={classnames({
-        'opacity-95 outline-1 bg-blue-500 rounded-lg absolute right-0': isExpanded,
+        'opacity-95 outline-1 bg-biru2 rounded-lg absolute right-0': isExpanded,
         'text-blue-100 flex flex-col':true,
         'hidden w-10': !isExpanded,
       })}>
-        <h2 className='border-l-4 m-3 py-0.5 pl-2'>Topik</h2>
+        <h2 className='border-l-4 border-pink1 m-3 py-0.5 pl-2'>Topik</h2>
         <ul className='grid grid-cols-2 gap-y-5 p-3'>
           {data.data.map((link: { href: string, name: string }) => 
             <Link 
@@ -62,7 +62,7 @@ export function Burger( {data} : {data:CategoryQueryResponse} ) {
         <RxHamburgerMenu/>
       </button>
       <aside className={classnames({
-        'opacity-95 bg-blue-500 fixed left-0 h-screen': isExpanded,
+        'opacity-95 bg-biru2 fixed left-0 h-screen': isExpanded,
         'text-blue-100 flex flex-col':true,
         'hidden w-10': !isExpanded,
       })}>

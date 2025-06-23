@@ -8,14 +8,14 @@ import Link from 'next/link'
 function Related({data}: {data: RelatedArticle[]}) {
   return (
     <div className='w-full py-5'>
-        <h1 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl mb-5'>Artikel Lainnya</h1>
+        <h1 className='border-l-4 border-l-pink1 pl-2 font-medium text-2xl mb-5'>Artikel Lainnya</h1>
         <ul className='md:grid md:grid-cols-3 space-x-15'>
             {data.map((data) => (
                 <Link
                     key={data.slug}
                     href={'/' + data.category.href + '/' + data.slug}
                 >            
-                    <div className='hover:transition-colors  hover:bg-blue-100'>
+                    <div className='hover:transition-colors  hover:bg-biru'>
                         <div className='flex justify-center'>
                             <StrapiImage
                                 src= {data.thumbnail.url}

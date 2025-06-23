@@ -15,7 +15,7 @@ export default function Categories({ strapiData }: { strapiData: NavigationBarQu
                   className={classnames({
                     'text-white border-b-2 border-solid': '/' + link.href === currentPath,
                     'text-blue-100': link.href !== currentPath,
-                    'hover:text-blue-300 transition-colors': true,
+                    'hover:text-biru transition-colors': true,
                   })} 
                   href={'/' + link.href }>
                   {link.name}

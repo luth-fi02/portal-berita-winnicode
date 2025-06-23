@@ -67,7 +67,7 @@ export default async function RecentArticle() {
     const strapiData = await getArticlesData<RecentQueryResponse>(recentQuery)
     return (
         <section>
-            <h2 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl mb-5'>Terbaru</h2>
+            <h2 className='border-l-4 border-l-pink1 pl-2 font-medium text-2xl mb-5'>Terbaru</h2>
             {strapiData && (
               <ArticleCard strapiData = {strapiData}/>
             )}
@@ -78,7 +78,7 @@ export default async function RecentArticle() {
 export function RecentCategoryArticle(strapiData: CategoryRecentQueryResponse) {
     return (
         <section>
-            <h2 className='border-l-4 border-l-blue-950 pl-2 font-medium text-2xl mb-5'>Terbaru</h2>
+            <h2 className='border-l-4 border-l-pink1 pl-2 font-medium text-2xl mb-5'>Terbaru</h2>
             <CategoryPageArticleCard strapiData = {strapiData}/>
         </section>   
     )

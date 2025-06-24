@@ -15,7 +15,7 @@ function Related({data}: {data: RelatedArticle[]}) {
                     key={data.slug}
                     href={'/' + data.category.href + '/' + data.slug}
                 >            
-                    <div className='hover:transition-colors  hover:bg-biru'>
+                    <div className='hover:transition-colors  hover:bg-biru space-y-5'>
                         <div className='flex justify-center'>
                             <StrapiImage
                                 src= {data.thumbnail.url}
@@ -26,7 +26,7 @@ function Related({data}: {data: RelatedArticle[]}) {
                             />
                         </div>
                         <div>
-                            <h1 className='text-center font-medium text-xl hover:underline'>{data.title}</h1>
+                            <h1 className='text-center font-medium text-lg hover:underline'>{data.title}</h1>
                         </div>
                     </div>
                 </Link>

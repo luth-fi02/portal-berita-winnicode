@@ -36,7 +36,6 @@ export default async function CategoryPage({
   const { page = '1' } = await searchParams
   const pageNumber = parseInt(page, 10) || 1
   const articles = await getArticlesData<CategoryRecentQueryResponse>(filterByCategoryQuery(category, pageNumber))
-  console.dir(articles,{depth:null})
   return (
     <div className='flex flex-col items-center justify-center'>
       <Image

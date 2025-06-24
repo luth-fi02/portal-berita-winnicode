@@ -2,7 +2,7 @@
 
 async function fetchData<T>(url: string): Promise<T | null> {
     try {
-      const response = await fetch(url, { next: { revalidate: 3600 } });
+      const response = await fetch(url);
       const data = await response.json() as T;
       return data;
     } catch (error) {

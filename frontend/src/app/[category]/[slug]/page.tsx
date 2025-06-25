@@ -43,8 +43,7 @@ export default async function CategoryPage({
 }: {
   params: { slug: string };
 }) {
-  // eslint-disable-next-line @typescript-eslint/await-thenable
-  const { slug } =await params;
+  const { slug } = params;
   const strapiData = await getArticlesData<ArticleQueryResponse>(findArticle(slug))
   if (!strapiData){
     throw new Error("Failed to fetch article data from Strapi");

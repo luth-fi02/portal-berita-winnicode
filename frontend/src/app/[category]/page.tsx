@@ -16,7 +16,7 @@ export default async function CategoryPage({
   params,
   searchParams,
 }: {
-  params: { category: string };
+  params: Promise<{ category: string }>
   searchParams: Promise<Record<string, string | undefined>>,
 }) {
   //get categories from param and validate if it exist in strapi
@@ -25,7 +25,7 @@ export default async function CategoryPage({
     throw new Error("Failed to fetch category data from Strapi.");
   }
   const allowedParams = strapiData.data.map((data) => data.name.toLowerCase())
-  // eslint-disable-next-line @typescript-eslint/await-thenable
+   
   const { category } = await params;
   const validate = allowedParams.find((data) => data === category )
   if (!validate) {

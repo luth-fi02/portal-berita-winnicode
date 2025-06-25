@@ -41,9 +41,9 @@ function findArticle(slug: string){
 export default async function CategoryPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>
 }) {
-  const { slug } = params;
+  const { slug } = await params;
   const strapiData = await getArticlesData<ArticleQueryResponse>(findArticle(slug))
   if (!strapiData){
     throw new Error("Failed to fetch article data from Strapi");

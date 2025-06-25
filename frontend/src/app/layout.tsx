@@ -13,6 +13,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Portal Berita",
   description: "Winnicode Garuda Teknologi",
+  icons: {
+    icon: '/image/logo.png'
+  }
 };
 
 export default function RootLayout({

@@ -4,7 +4,7 @@ import logo from '../../../public/image/logo.png'
 
 function About() {
   return (
-    <div className='flex flex-col items-center'>
+    <div className='flex flex-col items-center mx-5 lg:mx-25'>
       <Image
         src= {banner}
         width={500}
@@ -12,10 +12,10 @@ function About() {
         alt='logo'
         className='my-10'
       />
-      <h1 className='underline underline-offset-50 decoration-1 font-medium text-5xl p-2 mb-25'>About Us</h1>
-      <p className='text-sky-600 font-medium text-2xl mx-50 text-center italic'>Kami adalah pada publikasi berita, artikel, dan jurnalistik, serta menyediakan layanan digital yang mendukung transformasi dan pertumbuhan bisnis di era modern.</p>
+      <h1 className='underline underline-offset-50 decoration-1 font-medium text-5xl p-2 mb-25'>Tentang Kami</h1>
+      <p className='text-sky-600 font-medium text-2xl text-center italic'>Kami adalah pada publikasi berita, artikel, dan jurnalistik, serta menyediakan layanan digital yang mendukung transformasi dan pertumbuhan bisnis di era modern.</p>
       <h2 className='font-medium text-2xl p-2 mt-25 mb-15'>Profil</h2>
-      <div className='text-justify mx-50 text-xl space-y-10 font-light'>
+      <div className='text-justify text-xl space-y-10 font-light'>
         <p>PT. Winnicode Garuda Teknologi adalah perusahaan yang bergerak di bidang Media Publikasi dan Layanan Digital, didirikan pada tahun 2020 di Bandung.</p>
         <p>Kami hadir untuk menyediakan solusi publikasi dan digital yang inovatif bagi berbagai sektor industri.</p>
         <p>Fokus utama kami adalah pada publikasi berita, artikel, dan jurnalistik, serta menyediakan layanan digital yang mendukung transformasi dan pertumbuhan bisnis di era modern.</p>
@@ -30,7 +30,7 @@ function About() {
         className='my-20'
       />
       <h2 className='font-medium text-2xl p-2 mb-15'>Pendiri</h2>
-      <div className='text-justify mx-50 text-xl space-y-10 font-light mb-15'>
+      <div className='text-justify text-xl space-y-10 font-light mb-15'>
         <p>PT. Winnicode Garuda Teknologi didirikan pada tahun 2020 di Kota Bandung sebagai respons terhadap meningkatnya kebutuhan akan layanan digital yang inovatif dan terpercaya di era transformasi digital.</p>
         <p>Perusahaan ini lahir dari visi untuk menjadi pelopor dalam bidang publikasi media dan layanan digital yang mampu memberdayakan individu, institusi, dan pelaku usaha dalam menghadapi tantangan teknologi yang terus berkembang.</p>
         <p>Didirikan oleh sekelompok profesional muda yang memiliki latar belakang kuat di bidang teknologi informasi dan komunikasi, PT. Winnicode Garuda Teknologi berkomitmen untuk menyediakan solusi kreatif dan berkelanjutan.</p>

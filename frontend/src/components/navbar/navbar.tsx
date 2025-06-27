@@ -62,7 +62,7 @@ export default async function Navbar() {
         <div className='absolute right-5'>
         <Form action="/search" className='space-x-2'>
           <input 
-            placeholder="Search article...." 
+            placeholder="Cari artikel...." 
             className='bg-white rounded-sm text-gray-500 p-0.5 px-3' 
             name="query" />
           <button type="submit">

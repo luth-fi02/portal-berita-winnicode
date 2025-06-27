@@ -13,7 +13,7 @@ export default function Categories({ strapiData }: { strapiData: NavigationBarQu
                 <Link 
                   key={link.href} 
                   className={classnames({
-                    'text-white border-b-2 border-solid': '/' + link.href === currentPath,
+                    'text-white border-double border-b-2 py-2': '/' + link.href === currentPath,
                     'text-blue-100': link.href !== currentPath,
                     'hover:text-biru transition-colors': true,
                   })} 

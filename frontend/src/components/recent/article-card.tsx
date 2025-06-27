@@ -56,7 +56,7 @@ export function HomepageCategoryArticleCard ({ strapiData }: { strapiData: Homep
   return (
     <ul className='lg:grid lg:grid-cols-3 mt-5'>
       {strapiData.map((data: { href: string; name: string; articles: Articles[] }) => (
-        <div key={data.href} className='p-2'>
+        <div key={data.href} className='p-2 space-y-2'>
 
           <Link
             href={`/${data.href}`}
